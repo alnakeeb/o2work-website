@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RiseUp Solutions | الإعلانات الرقمية للمنظمات غير الربحية</title>
+    <!-- Google Fonts: خط عربي عصري -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome للأيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #f9fafc;
+            color: #1e2b3a;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ألوان رئيسية متوافقة مع RiseUp Solutions */
+        :root {
+            --primary-dark: #0a2c3d;
+            --primary-soft: #3a6b7c;
+            --accent-mint: #b4e6d9;
+            --accent-coral: #ff7f5c;
+            --text-dark: #1e2b3a;
+            --text-light: #f0f4f8;
+            --bg-light: #f9fafc;
+            --white: #ffffff;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --border-radius: 24px;
+        }
+
+        h1, h2, h3 {
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            color: var(--primary-dark);
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            right: 0;
+            width: 70px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-soft), var(--accent-coral));
+            border-radius: 4px;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #4a627a;
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        /* الهيدر (مطابق للصفحة الرئيسية) */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo img {
+            height: 100px;
+            width: auto;
+            display: block;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            transition: color 0.3s;
+            font-size: 1.1rem;
+        }
+
+        nav ul li a:hover,
+        nav ul li a.active {
+            color: var(--accent-coral);
+        }
+
+        /* قسم البطل (Hero) */
+        .hero {
+            background: linear-gradient(145deg, #ffffff 0%, #eef5f9 100%);
+            padding: 4rem 0 3rem 0;
+            text-align: center;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #2c3e50;
+            max-width: 800px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .hero .highlight-box {
+            background: rgba(58, 107, 124, 0.1);
+            border-right: 6px solid var(--accent-coral);
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+            text-align: right;
+        }
+
+        /* بطاقات الخدمات */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 3rem 0;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 2rem 1.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: transform 0.2s ease, box-shadow 0.2s;
+            border: 1px solid rgba(0,0,0,0.02);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 30px 45px -15px rgba(58, 107, 124, 0.25);
+        }
+
+        .service-image {
+            width: 100%;
+            height: 180px;
+            background-color: #f0f7fa;
+            border-radius: 16px;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-soft);
+            font-weight: 600;
+            font-size: 1.2rem;
+            border: 2px dashed var(--primary-soft);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .service-image span {
+            background: rgba(255,255,255,0.9);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            color: var(--primary-dark);
+        }
+
+        .service-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+        }
+
+        .service-card p {
+            color: #475569;
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+
+        .service-icon {
+            color: var(--accent-coral);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        /* شهادات العملاء */
+        .testimonials {
+            background: var(--primary-dark);
+            color: white;
+            padding: 4rem 0;
+            margin: 4rem 0;
+        }
+
+        .testimonials h2 {
+            color: white;
+        }
+        .testimonials h2:after {
+            background: linear-gradient(90deg, var(--accent-mint), var(--accent-coral));
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 3rem;
+        }
+
+        .testimonial-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(5px);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            border-right: 6px solid var(--accent-coral);
+        }
+
+        .testimonial-text {
+            font-size: 1.05rem;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            color: #f0f4f8;
+        }
+
+        .testimonial-author {
+            font-weight: 700;
+            color: var(--accent-mint);
+        }
+        .author-title {
+            font-size: 0.9rem;
+            color: #b0c4d9;
+        }
+
+        /* قسم العملية */
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 3rem 0;
+        }
+
+        .process-step {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            position: relative;
+            border-top: 6px solid var(--accent-coral);
+        }
+
+        .process-step .step-number {
+            font-size: 4rem;
+            font-weight: 800;
+            color: var(--accent-mint);
+            opacity: 0.3;
+            position: absolute;
+            top: 0.5rem;
+            left: 1rem;
+        }
+
+        .process-step h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--primary-soft);
+        }
+
+        /* الأسئلة الشائعة */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 25px;
+            margin: 3rem 0;
+        }
+
+        .faq-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+        }
+        .faq-question {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--primary-dark);
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .faq-question i {
+            color: var(--primary-soft);
+        }
+
+        /* الفوتر (مطابق للصفحة الرئيسية) */
+        footer {
+            background-color: #0a1c2a;
+            color: #b0c4d9;
+            padding: 60px 0 30px;
+            margin-top: 5rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: #b0c4d9;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--accent-coral);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-coral);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #1e3a4a;
+            font-size: 0.9rem;
+        }
+
+        /* استجابة للجوال */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            nav ul {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- الهيدر (تم تعديل القائمة حسب الترتيب والروابط المطلوبة) -->
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="RiseUp Solutions Logo">
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="index.html#services">الخدمات</a></li>
+                    <li><a href="google-grants.html">منح جوجل الاعلانية</a></li>
+                    <li><a href="sm.html">منح مايكروسوفت المجانية</a></li>
+                    <li><a href="digital advertsiting.html" class="active">الاعلانات الرقمية</a></li>
+                    <li><a href="tools.html">أدواتنا</a></li>
+                    <li><a href="index.html#testimonials">عملاءنا</a></li>
+                    <li><a href="about.html">تعرف علينا</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- القسم الرئيسي (Hero) -->
+    <section class="hero">
+        <div class="container">
+            <h1>عزز الرؤية، وولد العملاء المحتملين، واجمع تبرعات أكبر</h1>
+            <p>مجموعتنا الكاملة من خدمات الإعلانات الرقمية تشمل كل ما تحتاجه لدفع النمو عبر إعلانات بحث جوجل، الشبكة الإعلانية، فيسبوك، إنستغرام، يوتيوب والمزيد.</p>
+            
+            <div class="highlight-box">
+                <p><strong>قد يكون تشغيل حملة إعلانات رقمية ناجحة أشبه بحقل ألغام</strong> — مشهد الإعلانات الرقمية يزداد تعقيداً وتقنية بشكل متسارع. هناك إمكانات هائلة في المعلومات المتاحة، ولكن كيف تعرف أنك وجدت نقاط البيانات الصحيحة؟</p>
+                <p><strong>هنا يأتي دورنا.</strong> كشركة رائدة في الدفع لكل نقرة (PPC)، نجد البيانات التي تحتاجها مؤسستك حقاً، وندير حملاتك، ونرفع المهام التقنية عن كاهلك. يعمل متخصصونا معك لتصميم استراتيجية حملة قوية، ثم نراقب ونحسن ونوسع أداء إعلاناتك الرقمية.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- خدمات الإعلانات (6 بطاقات) -->
+        <section>
+            <h2>خدمات الإعلانات الرقمية</h2>
+            <div class="services-grid">
+                <!-- إعلانات بحث جوجل -->
+                <div class="service-card">
+                <img src="search.png" alt="فريق RiseUp Solutions يعملون معًا في مكتب عصري لتصميم استراتيجيات التسويق الرقمي للمنظمات غير الربحية">
+                    
+                    <i class="fas fa-search service-icon"></i>
+                    <h3>إعلانات بحث جوجل</h3>
+                    <p>عزز ظهور مؤسستك في أعلى نتائج البحث عندما يبحث الناس بنشاط عن خدمات مثل خدماتك. تواصل مع الداعمين والمتبرعين في اللحظة المناسبة.</p>
+                </div>
+
+                <!-- إعلانات العرض من جوجل -->
+                <div class="service-card">
+                    <img src="download.png" alt="فريق RiseUp Solutions يعملون معًا في مكتب عصري لتصميم استراتيجيات التسويق الرقمي للمنظمات غير الربحية">
+                    
+                    <i class="fas fa-ad service-icon"></i>
+                    <h3>إعلانات العرض من جوجل</h3>
+                    <p>ضع رسالتك عبر شبكة واسعة من المواقع الإلكترونية من خلال إعلانات مرئية جذابة وحملات مستهدفة تبرز مهمتك وتزيد التفاعل.</p>
+                </div>
+
+                <!-- إعلانات فيسبوك -->
+                <div class="service-card">
+                 
+                    <img src="download (1).png" alt="فريق RiseUp Solutions يعملون معًا في مكتب عصري لتصميم استراتيجيات التسويق الرقمي للمنظمات غير الربحية">
+                    
+                    
+                    <i class="fab fa-facebook service-icon"></i>
+                    <h3>إعلانات فيسبوك</h3>
+                    <p>ابنِ مجتمعاً نابضاً بالحياة حول مؤسستك. حملاتنا تزيد من الوصول، تروّج للأحداث، وتعزز الروابط مع الداعمين.</p>
+                </div>
+
+                <!-- إعلانات إنستغرام -->
+                <div class="service-card">
+                     <img src="instegram2.png" alt="فريق RiseUp Solutions يعملون معًا في مكتب عصري لتصميم استراتيجيات التسويق الرقمي للمنظمات غير الربحية">
+                    <i class="fab fa-instagram service-icon"></i>
+                    <h3>إعلانات إنستغرام</h3>
+                    <p>اعرض تأثير مؤسستك بحملات بصرية مذهلة. تواصل مع جمهور أصغر سناً وشجع على التبرعات من خلال سرد قصصي جذاب.</p>
+                </div>
+
+                <!-- إعلانات يوتيوب -->
+                <div class="service-card">
+                    <img src="yotube1.png" alt="فريق RiseUp Solutions يعملون معًا في مكتب عصري لتصميم استراتيجيات التسويق الرقمي للمنظمات غير الربحية">
+                    <i class="fab fa-youtube service-icon"></i>
+                    <h3>إعلانات يوتيوب</h3>
+                    <p>ضاعف صوت مؤسستك بإعلانات فيديو تأسر وتبلغ. أخبر قصتك، واصل تأثيرك، وحوّل المشاهدين إلى مناصرين متحمسين.</p>
+                </div>
+
+                <!-- منح إعلانات جوجل -->
+                <div class="service-card">
+                    <img src="google ads.png" alt="فريق RiseUp Solutions يعملون معًا في مكتب عصري لتصميم استراتيجيات التسويق الرقمي للمنظمات غير الربحية">
+                    <i class="fas fa-gift service-icon"></i>
+                    <h3>منح إعلانات جوجل</h3>
+                    <p>هل تعلم أن مؤسستك قد تحصل على 10,000$ شهرياً من الإعلانات المجانية؟ نساعدك في فتح هذا المورد، وإنشاء حملات فعالة من حيث التكلفة.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- شهادات العملاء -->
+    <section class="testimonials">
+        <div class="container">
+            <h2>ماذا يقول عملاؤنا</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"كمدير تنفيذي كنت أبحث عن جهة تفهم طبيعة العمل الإنساني وليس فقط الجانب التقني.
+RiseUp Solutions أثبتت أنها شريك استراتيجي حقيقي.
+رؤيتهم واضحة، تنفيذهم دقيق، ونتائجهم ملموسة."</p>
+                    <span class="testimonial-author"></span>
+                    <span class="author-title">  مدير تنفيذي، </span>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"باستفدنا بشكل كبير من تحسين صفحات الهبوط ونظام جذب المتبرعين الذي نفذته RiseUp Solutions.
+ارتفع معدل التحويل لدينا، وأصبح لدينا تدفق مستمر من المهتمين والداعمين.
+تجربة احترافية تستحق التوصية"</p>
+                    <span class="testimonial-author"></span>
+                    <span class="author-title"> مدير التسويق وتنمية الموارد</span>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"RiseUp Solutions لا تقدم خدمات تسويق تقليدية، بل تبني نظاماً متكاملاً لجذب المتبرعين.
+ما أعجبني هو تركيزهم على النتائج القابلة للقياس وتحسين معدل التحويل، وليس مجرد زيادة الأرقام.
+شراكة احترافية بمعنى الكلمة."</p>
+                    <span class="testimonial-author"></span>
+                    <span class="author-title">  مدير تسويق </span>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"عملنا مع RiseUp Solutions أحدث تحولاً حقيقياً في حضور منظمتنا الرقمي.
+الفريق لم يكتفِ بإدارة منحة Google فقط، بل أعاد هيكلة استراتيجيتنا الرقمية بالكامل.
+خلال أشهر قليلة لاحظنا زيادة واضحة في التفاعل وجودة الزيارات."</p>
+                    <span class="testimonial-author"></span>
+                    <span class="author-title"> مدير الاتصالات، منظمة إنسانية</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- قسم العملية -->
+        <section>
+            <h2>عمليتنا</h2>
+            <div class="process-grid">
+                <div class="process-step">
+                    <span class="step-number">01</span>
+                    <h3>بحث</h3>
+                    <p>نمارس العناية الواجبة في فهم أهداف مؤسستك وتحدياتها ورسالتها. ثم نضع استراتيجية حول علامتك التجارية، لنجد البيانات الأكثر أهمية لحملاتك.</p>
+                </div>
+                <div class="process-step">
+                    <span class="step-number">02</span>
+                    <h3>استراتيجية</h3>
+                    <p>من أول إعلان إلى نهاية مسار التحويل، نحن معك في كل خطوة، لضمان أن رحلة العميل تحقق النتائج التي تحتاجها.</p>
+                </div>
+                <div class="process-step">
+                    <span class="step-number">03</span>
+                    <h3>اختبار</h3>
+                    <p>إطار الاختبار الصارم لدينا يقود التحسين المستمر. بالتجربة والتحسين المستمرين، نضمن أن حملاتك دائماً محسّنة لأقصى تأثير وكفاءة.</p>
+                </div>
+                <div class="process-step">
+                    <span class="step-number">04</span>
+                    <h3>تحسين</h3>
+                    <p>نضاعف الجهود على نجاحات الحملات بعد الإطلاق. الأمر لا يتعلق بالفوز السريع فقط - نحن حريصون على نقل الأمور للمستوى التالي، لأننا ندرك أن الرهانات كبيرة.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- الأسئلة الشائعة -->
+        <section style="margin: 5rem 0;">
+            <h2>الأسئلة الشائعة</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question"><i class="fas fa-question-circle"></i>هل الإعلانات الرقمية ضرورية للمنظمات غير الربحية أم أنها فقط للشركات؟</div>
+                    <p>الإعلانات الرقمية ضرورية للمنظمات غير الربحية تماماً كما هي للشركات. سواء كنت تهدف لزيادة التبرعات، أو الترويج للأحداث، أو رفع الوعي، يمكن للإعلانات الرقمية مساعدتك في الوصول لأهدافك بفعالية. في عصرنا الرقمي، الظهور على الإنترنت أمر حاسم لجذب الداعمين وتوسيع تأثير مؤسستك.</p>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question"><i class="fas fa-question-circle"></i>كم سيكلف؟ وهل لدينا الميزانية؟</div>
+                    <p>تختلف تكلفة الإعلانات الرقمية حسب أهداف مؤسستك والمنصات التي تختارها والجمهور المستهدف. في RiseUp Solutions، نتفهم أن الميزانيات قد تكون محدودة، لذلك نعمل معك لإنشاء استراتيجية ميسورة التكلفة تزيد تأثيرك دون إجهاد مواردك. للحصول على تقدير شخصي، ننصحك بالاتصال بنا مباشرة.</p>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question"><i class="fas fa-question-circle"></i>كم من الوقت والجهد سنحتاج منا؟</div>
+                    <p>يتطلب البدء بعض المدخلات الأولية من فريقك، لكننا نتولى الجزء الأكبر. سنحتاج إلى رؤيتك حول مهمة مؤسستك وأهدافها وصوتها وهويتها البصرية. إذا كان لديك نصوص ومواد إبداعية جاهزة، يسعدنا استخدامها؛ وإذا لم تكن موجودة، يمكننا إنشاؤها لك. حتى لو لم تكن لديك خبرة سابقة، نحن هنا لإرشادك.</p>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question"><i class="fas fa-question-circle"></i>كيف نتأكد من أننا ننفق بحكمة ولا نهدر المال على الإعلانات؟</div>
+                    <p>نحن نعطي الأولوية لجعل كل دولار ذا قيمة من خلال تنفيذ تتبع التحويل، لضمان أن إنفاقك الإعلاني مرتبط مباشرة بنتائج ملموسة. سواء كانت عملاء محتملين أو تقديم نماذج أو تسجيلات أحداث أو تبرعات، نتتبع كل نقرة. نهجنا القائم على البيانات يعني أننا نراقب ونحسن حملاتك باستمرار لتحسين الأداء.</p>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question"><i class="fas fa-question-circle"></i>كم تستمر حملة الإعلانات الرقمية؟</div>
+                    <p>مدة الحملة تعتمد على أهداف مؤسستك واحتياجاتها. لكننا نوصي عادة بالالتزام بحملة لمدة ثلاثة أشهر على الأقل. هذا الإطار الزمني يسمح لنا بتحسين إعلاناتك بشكل فعال، وجمع بيانات قيمة، وإجراء التعديلات اللازمة لضمان أفضل النتائج. الحملات الأطول تؤدي غالباً إلى نتائج أقوى وأكثر استدامة.</p>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question"><i class="fas fa-question-circle"></i>ما الفرق بين PPC والإعلانات الرقمية؟</div>
+                    <p>في الواقع لا يوجد فرق بين الدفع لكل نقرة (PPC) والإعلانات الرقمية - إنها مجرد مسألة تسمية. PPC هو نوع من الإعلانات الرقمية حيث تدفع في كل مرة ينقر فيها شخص ما على إعلانك. الإعلانات الرقمية تشمل PPC بالإضافة إلى استراتيجيات أخرى مثل إعلانات العرض وإعلانات وسائل التواصل الاجتماعي والمزيد. الهدف واحد: إيصال رسالتك إلى الجمهور المناسب.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- الفوتر (مأخوذ من الصفحة الرئيسية) -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>RiseUp Solutions</h4>
+                    <p>وكالة تسويق رقمي متخصصة في دعم المؤسسات غير الربحية لتعزيز وجودها الرقمي وتحقيق أهدافها.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>روابط سريعة</h4>
+                    <ul>
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="index.html#services">الخدمات</a></li>
+                        <li><a href="index.html#testimonials">الشهادات</a></li>
+                        <li><a href="google-grants.html">منح إعلانات جوجل</a></li>
+                        <li><a href="sm.html">منح مايكروسوفت المجانية</a></li>
+                        <li><a href="tools.html">الأدوات</a></li>
+                        <li><a href="digital-advertising.html">الإعلانات الرقمية</a></li>
+                        <li><a href="#">المدونة</a></li>
+                        <li><a href="start.html">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>خدماتنا</h4>
+                    <ul>
+                        <li><a href="google-grants.html">إعلانات جوجل</a></li>
+                        <li><a href="index.html#services">تصميم مواقع</a></li>
+                        <li><a href="digital-advertising.html">إعلانات رقمية</a></li>
+                        <li><a href="index.html#services">تحسين محركات البحث</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>تواصل معنا</h4>
+                    <p><i class="fas fa-envelope"></i> info@o2work.online</p>
+                    <p><i class="fas fa-phone"></i> 967-771237999+</p>
+                    <p><i class="fas fa-map-marker-alt"></i> اليمن - صنعاء- ارتل</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>جميع الحقوق محفوظة-© 2026 RiseUp Solutions</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

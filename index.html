@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RiseUp Solutions - تسويق رقمي للمنظمات غير الربحية</title>
+    <!-- Google Fonts: خط عربي عصري -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome للأيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #f9fafc;
+            color: #1e2b3a;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* ألوان رئيسية */
+        :root {
+            --primary-dark: #0a2c3d;      /* أزرق داكن */
+            --primary-soft: #3a6b7c;       /* أزرق مخضر */
+            --accent-mint: #b4e6d9;        /* أخضر نعناعي فاتح */
+            --accent-coral: #ff7f5c;        /* برتقالي مرجاني */
+            --text-dark: #1e2b3a;
+            --text-light: #f0f4f8;
+            --bg-light: #f9fafc;
+            --white: #ffffff;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        /* التصميم العام */
+        section {
+            padding: 80px 0;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 20px;
+            color: var(--primary-dark);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--primary-dark);
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--primary-soft);
+        }
+
+        p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: #2c3e50;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 36px;
+            background-color: var(--accent-coral);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 8px 15px rgba(255, 127, 92, 0.3);
+        }
+
+        .btn:hover {
+            background-color: #e55a3a;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(255, 127, 92, 0.4);
+        }
+
+        /* الهيدر */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo img {
+            height: 100px;
+            width: auto;
+            display: block;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            transition: color 0.3s;
+            font-size: 1.1rem;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-coral);
+        }
+
+        /* قسم البطل (Hero) */
+        .hero {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2f1 100%);
+            overflow: hidden;
+        }
+
+        .hero .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .hero-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            transition: transform 0.5s ease;
+        }
+
+        .hero-image img:hover {
+            transform: scale(1.02);
+        }
+
+        /* قسم الخدمات */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+        }
+
+        .service-card i {
+            font-size: 3rem;
+            color: var(--accent-coral);
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            font-size: 1rem;
+        }
+
+        .service-list {
+            list-style: none;
+            text-align: right;
+            margin-top: 20px;
+        }
+
+        .service-list li {
+            margin: 10px 0;
+            font-weight: 500;
+        }
+
+        .service-list i {
+            font-size: 1.2rem;
+            color: var(--accent-mint);
+            margin-left: 10px;
+        }
+
+        /* قسم الشركاء */
+        .partners {
+            background-color: #ffffff;
+            padding: 80px 0;
+        }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .partner-card {
+            background: var(--bg-light);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+            border: 1px solid #eef2f6;
+        }
+
+        .partner-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .partner-card h3 {
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .partner-card p {
+            font-size: 1rem;
+            color: #2c3e50;
+            margin-bottom: 0;
+        }
+
+        .partner-card hr {
+            margin: 20px 0;
+            border: 1px dashed var(--accent-mint);
+        }
+
+        .tip-box {
+            background: linear-gradient(145deg, #f0f9ff, #ffffff);
+            padding: 30px;
+            border-radius: 30px;
+            margin-top: 50px;
+            text-align: center;
+            border: 1px solid var(--accent-mint);
+        }
+
+        .tip-box i {
+            font-size: 2.5rem;
+            color: var(--accent-coral);
+            margin-bottom: 15px;
+        }
+
+        .tip-box p {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 0;
+        }
+
+        /* شهادات العملاء */
+        .testimonials {
+            background-color: var(--primary-dark);
+            color: white;
+        }
+
+        .testimonials h2, .testimonials h3 {
+            color: white;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .testimonial-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(5px);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: 0.3s;
+        }
+
+        .testimonial-card:hover {
+            background: rgba(255,255,255,0.15);
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #e0e0e0;
+        }
+
+        .client-name {
+            font-weight: 700;
+            color: var(--accent-mint);
+        }
+
+        /* قسم الأدوات */
+        .tools {
+            text-align: center;
+            background: linear-gradient(135deg, #fff 0%, #f5f5f5 100%);
+        }
+
+        .tools-logos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .tool-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .tool-item img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            filter: grayscale(0.3);
+            transition: 0.3s;
+        }
+
+        .tool-item:hover img {
+            filter: grayscale(0);
+            transform: scale(1.1);
+        }
+
+        /* الفوتر */
+        footer {
+            background-color: #0a1c2a;
+            color: #b0c4d9;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: #b0c4d9;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--accent-coral);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-coral);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #1e3a4a;
+            font-size: 0.9rem;
+        }
+
+        /* تحسينات للجوال */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            nav ul {
+                gap: 15px;
+            }
+            .hero .container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero-image {
+                order: -1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="RiseUp Solutions Logo">
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="#services">الخدمات</a></li>
+                    <li><a href="google-grants.html">منح جوجل الاعلانية</a></li>
+                    <li><a href="sm.html">منح مايكروسوفت المجانية</a></li>
+                    <li><a href="digital advertsiting.html">الاعلانات الرقمية</a></li>
+                    <li><a href="tools.html">أدواتنا</a></li>
+                    <!-- إضافة رابط شركاؤنا -->
+                    <li><a href="#partners">شركاؤنا</a></li>
+                    <li><a href="#testimonials">عملاؤنا</a></li>
+                    <li><a href="about.html">تعرف علينا</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- القسم البطولي -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-text">
+                    <h1>هل تعلم أن مؤسستك يمكنها الحصول على 140.000 دولار سنويا كمنح رقمية مجانية كل عام؟؟</h1>
+                    <p style="font-size:18px;color:#444;max-width:850px;margin:auto;line-height:1.7;">
+                        العديد من المنظمات غير الربحية والجمعيات الخيرية مؤهلة للحصول على منح رقمية قوية تقدمها شركات التكنولوجيا العالمية مثل جوجل التي تقدم 10,000 دولار شهريا ومايكروسوفت التي تقدم 2000 دولار سنويا. تساعد هذه المنح المؤسسات على توسيع تأثيرها، والوصول إلى عدد أكبر من المانحين، والترويج لمشاريعها الإنسانية عبر الإنترنت.
+                    </p>
+                    <h2 style="color:#0a2540;font-size:30px;margin-bottom:20px;">ومع ذلك، تتطلب هذه المنح شروطًا محددة</h2>
+                    <ul style="font-size:16px;color:#444;line-height:1.8;">
+                        <li>يجب أن تكون المنظمة مسجلة كمنظمة غير ربحية أو جمعية خيرية.</li>
+                        <li>يجب أن تمتلك المنظمة موقعًا إلكترونيًا احترافيًا ونشطًا.</li>
+                        <li>يجب أن يكون الموقع آمنًا (SSL) ويشرح بوضوح رسالة المنظمة وأنشطتها.</li>
+                        <li>يجب أن تلتزم المنظمة بسياسات برامج المنح غير الربحية.</li>
+                        <li>يجب إدارة حسابات الإعلانات والأدوات الرقمية وفقًا لإرشادات البرنامج الصارمة.</li>
+                    </ul>
+                    <p style="font-size:17px;color:#444;margin-top:30px;line-height:1.7;">
+                        بسبب هذه المتطلبات، تعتمد العديد من المنظمات على شريك متخصص للتقدم بطلب للحصول على هذه المنح، وتلبية المتطلبات التقنية، وإدارة الحسابات بشكل احترافي.
+                    </p>
+                    <p><strong>RiseUp Solutions</strong> هي وكالة تسويق رقمي مكرسة لمساعدة المنظمات غير الحكومية وغير الربحية في التقدم بنجاح للحصول على هذه المنح الرقمية وإدارتها بشكل احترافي. بدءًا من إعداد موقعك الإلكتروني وتلبية المتطلبات التقنية وصولاً إلى إدارة الحملات الإعلانية والأنظمة الرقمية، نضمن لمؤسستك الحصول على أقصى استفادة من هذه البرامج القوية والبحث المدفوع الشاملة.</p>
+                    <a href="start.html" class="btn">ابدأ الآن</a>
+                </div>
+                <div class="hero-image">
+                    <img src="1.png" alt="فريق RiseUp Solutions يعملون معًا في مكتب عصري لتصميم استراتيجيات التسويق الرقمي للمنظمات غير الربحية">
+                </div>
+            </div>
+        </section>
+
+        <!-- قسم منحة Google الإعلانية -->
+        <section style="background-color: #ffffff;">
+            <div class="container" style="text-align: center;">
+                <h2>💰 برنامج منحة Google الإعلانية</h2>
+                <p style="font-size: 1.3rem; max-width: 800px; margin: 0 auto;">يوفر برنامج منحة Google الإعلانية إنفاقًا إعلانيًا مجانيًا للمؤسسات غير الربحية المؤهلة.</p>
+                <div style="background: linear-gradient(145deg, #e0f2f1, #ffffff); padding: 40px; border-radius: 30px; margin-top: 40px;">
+                    <h3>تخيل التأثير الذي يمكن أن تحدثه مؤسستك بمبلغ إضافي قدره 10,000 دولار شهريًا من إعلانات Google المجانية!</h3>
+                    <p>هذا يصل إلى 120,000 دولار سنويًا للوصول إلى المزيد من الأشخاص، وزيادة الوعي بقضيتك، وإحداث فرق أكبر.</p>
+                    <li>
+                      <a href="google-grants.html" style="color:#0078d4;font-weight:bold;text-decoration:none;">
+                        للحصول على تفاصيل أكثر اضغط هنا – منح جوجل الاعلانية
+                      </a>
+                    </li>
+                    <img src="3.png" alt="رسم بياني يوضح تأثير 10,000 دولار شهريًا من إعلانات جوجل المجانية على وصول المؤسسات غير الربحية" style="max-width: 100%; border-radius: 20px; margin-top: 20px;">
+                </div>
+            </div>
+        </section>
+
+        <!-- قسم منحة مايكروسوفت الإعلانية -->
+        <section style="background-color: #ffffff;">
+            <div class="container" style="text-align: center;">
+                <h2>💰 مايكروسوفت للمؤسسات غير الربحية</h2>
+                <p style="font-size: 1.3rem; max-width: 800px; margin: 0 auto;">يمكن للمنظمات غير الربحية أيضًا الحصول على ما يصل إلى 2,000 دولار كرصيد سنوي سحابي والوصول إلى أدوات احترافية تدعم التحول الرقمي وكفاءة العمليات.</p>
+                <div style="background: linear-gradient(145deg, #f0f9ff, #ffffff); padding: 40px; border-radius: 30px; margin-top: 40px;">
+                    <h3>تصور الأثر الجيد الذي تحصل عليه مؤسستك غير الربحية عندما تدار باستخدام حلول Microsoft 365 السحابية لتحسين الأمان عبر الإنترنت وتقليل التكاليف وتمكين العمل عن بُعد.</h3>
+                    <p>توفر مايكروسوفت للمؤسسات غير الربحية المؤهلة منحاً وخصومات حصرية على برامجها السحابية،  بما في ذلك Microsoft 365 و Azure و Dynamics 365، لتعزيز الإنتاجية والأمان وايضا تقدم 300 ايميل وترخيص مجاني. تتيح المبادرة أدوات تعاون مثل Teams وتخزين سحابي بسعة 1 تيرابايت، مع برامج خاصة للمنظمات الصغيرة والكبيرة لتقليل التكاليف التقنية.</p>
+                   <li>
+                    <a href="sm.html" style="color:#0078d4;font-weight:bold;text-decoration:none;">
+                      للحصول على تفاصيل أكثر اضغط هنا – منح مايكروسوفت المجانية
+                    </a>
+                   </li>
+                    <img src="serveimage.png" alt="microsoft" style="max-width: 50%; border-radius: 10px; margin-top: 10px;">
+                </div>
+            </div>
+        </section>
+
+        <!-- قسم شركاؤنا (جديد) -->
+        <section id="partners" class="partners">
+            <div class="container">
+                <h2 style="text-align: center;">شركاؤنا في دعم وتمكين المنظمات غير الربحية</h2>
+                <p style="text-align: center; font-size: 1.3rem; max-width: 800px; margin: 0 auto 20px;">نحن نتعاون مع منصات عالمية موثوقة تساعد المنظمات غير الربحية على التحقق من هويتها، تعزيز الشفافية، والحصول على المنح والبرامج التقنية.</p>
+                
+                <div class="partners-grid">
+                    <!-- 1️⃣ Goodstack -->
+                    <div class="partner-card">
+                        <h3>1️⃣ Goodstack</h3>
+                        <p>منصة عالمية متخصصة في التحقق من المنظمات غير الربحية وربطها بالشركات والبرامج التقنية. تساعد Goodstack المنظمات على إثبات أهليتها للحصول على المنح والخدمات المجانية من الشركات العالمية، كما تدعم برامج التبرعات والمسؤولية الاجتماعية للشركات.</p>
+                    </div>
+                    <!-- 2️⃣ TechSoup -->
+                    <div class="partner-card">
+                        <h3>2️⃣ TechSoup</h3>
+                        <p>إحدى أشهر المنصات العالمية التي تقدم برامج وتقنيات بأسعار مخفضة أو مجانية للمنظمات غير الربحية. توفر TechSoup الوصول إلى العديد من الأدوات الرقمية والخدمات التقنية التي تساعد المنظمات على تحسين أدائها وإدارة أعمالها بكفاءة.</p>
+                    </div>
+                    <!-- 3️⃣ GuideStar -->
+                    <div class="partner-card">
+                        <h3>3️⃣ GuideStar</h3>
+                        <p>قاعدة بيانات عالمية للمنظمات غير الربحية تساعد على تعزيز الشفافية والثقة. تتيح GuideStar للمنظمات عرض معلوماتها المالية وبرامجها وأنشطتها، مما يساعد الجهات المانحة والمتبرعين على التعرف عليها ودعمها.</p>
+                    </div>
+                    <!-- 4️⃣ Candid -->
+                    <div class="partner-card">
+                        <h3>4️⃣ Candid</h3>
+                        <p>منظمة عالمية توفر بيانات وأبحاث حول العمل الخيري والمنظمات غير الربحية. تقدم Candid أدوات ومعلومات تساعد المنظمات على العثور على فرص التمويل والمنح، كما تدعم الشفافية والتعاون في القطاع غير الربحي.</p>
+                    </div>
+                    <!-- 5️⃣ Charity Navigator -->
+                    <div class="partner-card">
+                        <h3>5️⃣ Charity Navigator</h3>
+                        <p>منصة متخصصة في تقييم المنظمات الخيرية وفق معايير الشفافية والأداء المالي. توفر Charity Navigator تقييمات موثوقة تساعد المتبرعين على اختيار المنظمات الأكثر تأثيرًا ومصداقية.</p>
+                    </div>
+                    <!-- 6️⃣ GlobalGiving -->
+                    <div class="partner-card">
+                        <h3>6️⃣ GlobalGiving</h3>
+                        <p>منصة عالمية للتمويل الجماعي تدعم المشاريع الإنسانية والتنموية حول العالم. تتيح GlobalGiving للمنظمات غير الربحية عرض مشاريعها وجمع التبرعات من الأفراد والشركات في مختلف الدول.</p>
+                    </div>
+                </div>
+
+                <!-- نصيحة مهمة -->
+                <div class="tip-box">
+                    <i class="fas fa-lightbulb"></i>
+                    <p>✅ نعمل مع منصات عالمية موثوقة لدعم المنظمات غير الربحية وتمكينها من الوصول إلى الموارد والمنح التي تساعدها على تحقيق تأثير أكبر في المجتمع.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- قسم الخدمات -->
+        <section id="services" style="background: linear-gradient(180deg, #f0f5fa 0%, #ffffff 100%); padding: 80px 0; margin-top: 0;">
+            <div class="container">
+                <h2 style="text-align: center;">خدماتنا المتكاملة</h2>
+                
+                <div class="services-grid">
+                    <!-- بطاقة الإعلانات الرقمية -->
+                    <div class="service-card">
+                        <i class="fas fa-ad"></i>
+                        <h3>الإعلانات الرقمية</h3>
+                        <p>عزز الرؤية، وولد العملاء المحتملين، واجمع تبرعات أكبر. مجموعة كاملة من خدمات الإعلانات الرقمية عبر:</p>
+                        <ul class="service-list">
+                            <li><i class="fas fa-check-circle"></i> بحث Google وعرض الشبكة</li>
+                            <li><i class="fas fa-check-circle"></i> بينج (Bing)</li>
+                            <li><i class="fas fa-check-circle"></i> يوتيوب</li>
+                            <li><i class="fas fa-check-circle"></i> فيسبوك وانستغرام</li>
+                        </ul>
+                        <img src="5.jpeg" alt="أيقونة تمثل خدمات الإعلانات الرقمية عبر منصات متعددة مثل جوجل وفيسبوك" style="width: 100%; margin-top: 20px; border-radius: 10px;">
+                    </div>
+
+                    <!-- بطاقة تصميم وتطوير المواقع -->
+                    <div class="service-card">
+                        <i class="fas fa-laptop"></i>
+                        <h3>تصميم وتطوير المواقع</h3>
+                        <p>هل تحتاج إلى موقع أفضل؟ استأجر أذكى الناس 😎 أنت تستحق موقعًا يبرز رسالتك ويعرض تأثيرك ويتواصل مع الداعمين.</p>
+                        <img src="4.png" alt="شاشة كمبيوتر تعرض نموذجًا لموقع ويب حديث وجذاب للمنظمات غير الربحية" style="width: 100%; margin-top: 20px; border-radius: 10px;">
+                    </div>
+
+                    <!-- بطاقة استراتيجيات الدفع لكل نقرة -->
+                    <div class="service-card">
+                        <i class="fas fa-chart-line"></i>
+                        <h3>استراتيجيات البحث المدفوع</h3>
+                        <p>نحن ندير حملات الدفع لكل نقرة (PPC) باحترافية لضمان أفضل عائد على استثمارك الإعلاني.</p>
+                        <img src="2.png" alt="رسوم بيانية وأدوات تحليل تعرض أداء حملات الدفع لكل نقرة" style="width: 100%; margin-top: 20px; border-radius: 10px;">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- شهادات العملاء -->
+        <section id="testimonials" class="testimonials">
+            <div class="container">
+                <h2 style="text-align: center;">ماذا يقول عملاؤنا</h2>
+                <div class="testimonials-grid">
+                    <!-- شهادة 1 -->
+                    <div class="testimonial-card">
+                        <p>"كان تيم وفريقه إجابة للصلاة حرفيًا. كنا بحاجة لطريقة فعالة من حيث التكلفة للوصول إلى كنائس وعائلات أكثر. الآن هم أكبر وأسرع قنواتنا نموًا للوصول إلى مستخدمين الجدد."</p>
+                        <p class="client-name">— عميل في قطاع التعليم</p>
+                    </div>
+                    <!-- شهادة 2 -->
+                    <div class="testimonial-card">
+                        <p>"العمل مع تيم في RiseUp Solutions أزال التوتر عن إدارة منحة Google الإعلانية لدينا. خبرتهم حولتها إلى أصل قيم."</p>
+                        <p class="client-name">— مدير منظمة غير ربحية</p>
+                    </div>
+                    <!-- شهادة 3 -->
+                    <div class="testimonial-card">
+                        <p>"تعيين RiseUp Solutions زاد من قدرة فريقنا. شهدنا زيادة في نسبة النقر إلى الظهور بنسبة 142% عامًا بعد عام."</p>
+                        <p class="client-name">— مسؤول تسويق</p>
+                    </div>
+                    <!-- شهادة 4 -->
+                    <div class="testimonial-card">
+                        <p>"منذ اليوم الأول للشراكة، لم أواجه سوى الدعم واللطف والصدق والكفاءة. إنهم امتداد حقيقي لفريقنا."</p>
+                        <p class="client-name">— FILO</p>
+                    </div>
+                    <!-- شهادة 5 -->
+                    <div class="testimonial-card">
+                        <p>"نشعر بأن استثمار كل مواردنا في خدمات RiseUp Solutions كان مبررًا تمامًا. في 3 أشهر فقط، 24% من عملاءنا المتوقعين كانوا نتيجة مباشرة لمهاراتهم."</p>
+                        <p class="client-name">— مؤسسة تعليمية</p>
+                    </div>
+                    <!-- شهادة 6 -->
+                    <div class="testimonial-card">
+                        <p>"بفضل RiseUp Solutions، بدأنا بتوليد 7 أضعاف العملاء المحتملين أسبوعيًا، و25 ضعفًا في موسم الذروة. أضفنا موظفًا لمتابعة هؤلاء العملاء."</p>
+                        <p class="client-name">— منظمة غير ربحية</p>
+                    </div>
+                    <!-- شهادة 7 -->
+                    <div class="testimonial-card">
+                        <p>"RiseUp Solutions هو امتداد مذهل لفريق التسويق في أكاديميتنا. ما ساعدونا في تنفيذه أحدث ثورة في مسار القبول بالمدرسة."</p>
+                        <p class="client-name">— Skey Academy</p>
+                    </div>
+                    <!-- شهادة 8 -->
+                    <div class="testimonial-card">
+                        <p>"كان العمل مع RiseUp Solutions رائعًا. رؤيتهم وتنفيذهم لتحديث الموقع كانا بالضبط ما احتجنا. أحب حسهم التصميمي."</p>
+                        <p class="client-name">— Disability Rehabilitation Program</p>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 40px;">
+                    <img src="6.png" alt="مجموعة من الشعارات أو صور العملاء الذين شاركوا شهاداتهم الإيجابية" style="max-width: 100%; border-radius: 20px;">
+                </div>
+            </div>
+        </section>
+        <!-- قسم الأدوات -->
+        <section id="tools" class="tools">
+            <div class="container">
+                <h2>🛠️ أفضل الأدوات لتسويق مؤسستك غير الربحية</h2>
+                <p style="max-width: 700px; margin: 0 auto;">هناك الكثير من الأدوات البرمجية اليوم. لقد اختبرنا مجموعة منها وهذه هي الأدوات القليلة الحاسمة التي نستمتع بها أكثر ونؤمن بها ونستخدمها بأنفسنا. كما أنها تقدم خصومات حصرية للمؤسسات غير الربحية!</p>
+                
+                <div class="tools-logos">
+                    <div class="tool-item">
+                        <img src="gag.png" alt="شعار برنامج منح جوجل الإعلانية" style="width:100px; height:100px; object-fit: contain;">
+                        <span>Google Ad Grants</span>
+                    </div>
+                    <div class="tool-item">
+                        <img src="meta.png" alt="شعار إعلانات ميتا" style="width:100px; height:100px; object-fit: contain;">
+                        <span>Meta Ads</span>
+                    </div>
+                    <div class="tool-item">
+                        <img src="canva.webp" alt="شعار كانفا" style="width:100px; height:100px; object-fit: contain;">
+                        <span>Canva</span>
+                    </div>
+                    <div class="tool-item">
+                        <img src="wordp.png" alt="شعار ووردبريس" style="width:100px; height:100px; object-fit: contain;">
+                        <span>WordPress</span>
+                    </div>
+                    <div class="tool-item">
+                        <img src="mailch.png" alt="شعار ميلتشيمب" style="width:100px; height:100px; object-fit: contain;">
+                        <span>Mailchimp</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>RiseUp Solutions</h4>
+                    <p>وكالة تسويق رقمي متخصصة في دعم المؤسسات غير الربحية لتعزيز وجودها الرقمي وتحقيق أهدافها.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>روابط سريعة</h4>
+                    <ul>
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="#services">الخدمات</a></li>
+                        <li><a href="#testimonials">الشهادات</a></li>
+                        <li><a href="tools.html">أدواتنا</a></li>
+                        <li><a href="google-grants.html">منح إعلانات جوجل</a></li>
+                        <li><a href="sm.html">منح مايكروسوفت المجانية</a></li>
+                        <li><a href="#partners">شركاؤنا</a></li>
+                        <li><a href="about.html">تعرف علينا</a></li>
+                        <li><a href="#">المدونة</a></li>
+                        <li><a href="start.html">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>خدماتنا</h4>
+                    <ul>
+                        <li><a href="google-grants.html">إعلانات جوجل</a></li>
+                        <li><a href="#services">تصميم مواقع</a></li>
+                        <li><a href="#services">إعلانات فيسبوك</a></li>
+                        <li><a href="#services">تحسين محركات البحث</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>تواصل معنا</h4>
+                    <p><i class="fas fa-envelope"></i> info@o2work.online</p>
+                    <p><i class="fas fa-phone"></i> 967-771237999+</p>
+                    <p><i class="fas fa-map-marker-alt"></i> اليمن - صنعاء</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>جميع الحقوق محفوظة-© 2026 RiseUp Solutions</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

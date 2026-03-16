@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شكراً لتواصلكم | تم استلام رسالتكم</title>
+    <!-- Google Fonts - Cairo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 (مجاني) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: #2d3436;
+        }
+
+        .thank-you-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2), 0 10px 20px rgba(0, 0, 0, 0.1);
+            padding: 60px 40px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: transform 0.3s ease;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .thank-you-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .icon-circle {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #6c5ce7, #a463f5);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            box-shadow: 0 10px 20px rgba(108, 92, 231, 0.3);
+        }
+
+        .icon-circle i {
+            font-size: 50px;
+            color: white;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #6c5ce7, #a463f5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.3;
+        }
+
+        .message {
+            font-size: 1.2rem;
+            color: #4a4a4a;
+            margin-bottom: 20px;
+            font-weight: 400;
+            line-height: 1.8;
+        }
+
+        .details {
+            background: rgba(108, 92, 231, 0.08);
+            padding: 20px;
+            border-radius: 20px;
+            margin: 30px 0;
+            border-right: 4px solid #6c5ce7;
+            text-align: right;
+        }
+
+        .details p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #2d3436;
+            font-weight: 500;
+        }
+
+        .details i {
+            color: #6c5ce7;
+            font-size: 1.2rem;
+            width: 25px;
+        }
+
+        .btn-home {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #6c5ce7, #a463f5);
+            color: white;
+            border: none;
+            padding: 16px 40px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(108, 92, 231, 0.3);
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
+        .btn-home:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(108, 92, 231, 0.5);
+        }
+
+        .btn-home i {
+            font-size: 1.1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-home:hover i {
+            transform: translateX(-5px);
+        }
+
+        .social-links {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: rgba(108, 92, 231, 0.1);
+            border-radius: 50%;
+            color: #6c5ce7;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            background: #6c5ce7;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .footer-note {
+            margin-top: 30px;
+            font-size: 0.95rem;
+            color: #888;
+        }
+
+        @media (max-width: 480px) {
+            .thank-you-card {
+                padding: 40px 20px;
+            }
+            h1 {
+                font-size: 2.2rem;
+            }
+            .icon-circle {
+                width: 80px;
+                height: 80px;
+            }
+            .icon-circle i {
+                font-size: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="thank-you-card">
+        <!-- أيقونة النجاح -->
+        <div class="icon-circle">
+            <i class="fas fa-check"></i>
+        </div>
+
+        <!-- عنوان الشكر -->
+        <h1>شكراً لتواصلكم!</h1>
+
+        <!-- رسالة التأكيد -->
+        <div class="message">
+            تم استلام رسالتكم بنجاح، وسيقوم فريقنا بالتواصل معكم في أقرب وقت ممكن.
+        </div>
+
+        <!-- تفاصيل إضافية (اختياري) -->
+        <div class="details">
+            <p><i class="fas fa-envelope"></i> تم إرسال نسخة من طلبكم إلى بريدكم الإلكتروني</p>
+            <p><i class="fas fa-clock"></i> وقت الرد المتوقع: خلال 24 ساعة</p>
+            <p><i class="fas fa-phone-alt"></i> للاستفسار العاجل: 967-XXX-XXX-XXX</p>
+        </div>
+
+        <!-- زر العودة إلى الصفحة الرئيسية أو صفحة الاتصال -->
+        <a href="index.html" class="btn-home">
+            <i class="fas fa-arrow-right"></i>
+            العودة إلى الصفحة الرئيسية
+        </a>
+
+        <!-- روابط التواصل الاجتماعي (اختياري) -->
+        <div class="social-links">
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+            <a href="#"><i class="fab fa-telegram-plane"></i></a>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+
+        <div class="footer-note">
+            © 2026 جميع الحقوق محفوظة | فريق تنمية الأثر
+        </div>
+    </div>
+</body>
+</html>

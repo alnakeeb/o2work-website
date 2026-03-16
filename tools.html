@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RiseUp Solutions | أدوات تسويق المنظمات غير الربحية</title>
+    <!-- Google Fonts: خط عربي عصري -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome للأيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #f9fafc;
+            color: #1e2b3a;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ألوان رئيسية متوافقة مع RiseUp Solutions */
+        :root {
+            --primary-dark: #0a2c3d;
+            --primary-soft: #3a6b7c;
+            --accent-mint: #b4e6d9;
+            --accent-coral: #ff7f5c;
+            --text-dark: #1e2b3a;
+            --text-light: #f0f4f8;
+            --bg-light: #f9fafc;
+            --white: #ffffff;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --border-radius: 24px;
+        }
+
+        h1, h2, h3 {
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            color: var(--primary-dark);
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            right: 0;
+            width: 70px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-soft), var(--accent-coral));
+            border-radius: 4px;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #4a627a;
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        /* الهيدر (مطابق للصفحة الرئيسية) */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo img {
+            height: 100px;
+            width: auto;
+            display: block;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            transition: color 0.3s;
+            font-size: 1.1rem;
+        }
+
+        nav ul li a:hover,
+        nav ul li a.active {
+            color: var(--accent-coral);
+        }
+
+        /* قسم البطل (Hero) */
+        .hero {
+            background: linear-gradient(145deg, #ffffff 0%, #eef5f9 100%);
+            padding: 4rem 0 3rem 0;
+            text-align: center;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #2c3e50;
+            max-width: 800px;
+            margin: 0 auto 1.5rem;
+        }
+
+        /* بطاقات الأدوات */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 3rem 0;
+        }
+
+        .tool-card {
+            background: var(--white);
+            padding: 2rem 1.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: transform 0.2s ease, box-shadow 0.2s;
+            border: 1px solid rgba(0,0,0,0.02);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 30px 45px -15px rgba(58, 107, 124, 0.25);
+        }
+
+        .tool-image {
+            width: 100%;
+            height: 180px;
+            background-color: #f0f7fa;
+            border-radius: 16px;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-soft);
+            font-weight: 600;
+            font-size: 1.2rem;
+            border: 2px dashed var(--primary-soft);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .tool-image span {
+            background: rgba(255,255,255,0.9);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            color: var(--primary-dark);
+        }
+
+        .tool-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 0.8rem;
+            color: var(--primary-dark);
+        }
+
+        .tool-card .tool-badge {
+            display: inline-block;
+            background: var(--accent-mint);
+            color: var(--primary-dark);
+            padding: 0.3rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            width: fit-content;
+        }
+
+        .tool-card p {
+            color: #475569;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .tool-link {
+            color: var(--accent-coral);
+            font-weight: 600;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: auto;
+        }
+
+        .tool-link:hover {
+            color: var(--primary-soft);
+        }
+
+        /* فئة الأدوات (قسم) */
+        .category-section {
+            margin: 4rem 0;
+        }
+
+        .category-title {
+            font-size: 2rem;
+            color: var(--primary-soft);
+            margin-bottom: 2rem;
+            border-right: 6px solid var(--accent-coral);
+            padding-right: 1rem;
+        }
+
+        /* إفصاح */
+        .disclosure {
+            background: #fff3e0;
+            border-right: 6px solid var(--accent-coral);
+            padding: 1.5rem 2rem;
+            border-radius: 20px;
+            margin: 2rem 0 3rem;
+            font-size: 1rem;
+        }
+
+        .disclosure i {
+            color: var(--accent-coral);
+            margin-left: 0.5rem;
+        }
+
+        /* الفوتر (مطابق للصفحة الرئيسية) */
+        footer {
+            background-color: #0a1c2a;
+            color: #b0c4d9;
+            padding: 60px 0 30px;
+            margin-top: 5rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: #b0c4d9;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--accent-coral);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-coral);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #1e3a4a;
+            font-size: 0.9rem;
+        }
+
+        /* استجابة للجوال */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            nav ul {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- الهيدر (مأخوذ من الصفحة الرئيسية) مع تعديل العناوين والروابط حسب الطلب -->
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="RiseUp Solutions Logo">
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="index.html#services">الخدمات</a></li>
+                    <li><a href="google-grants.html">منح جوجل الاعلانية</a></li>
+                    <li><a href="sm.html">منح مايكروسوفت المجانية</a></li>
+                    <li><a href="digital advertsiting.html">الإعلانات الرقمية</a></li>
+                    <li><a href="tools.html" class="active">أدواتنا</a></li>
+                    <li><a href="index.html#partners">شركاؤنا</a></li>
+                    <li><a href="index.html#testimonials">عملاءنا</a></li>
+                    <li><a href="about.html">تعرف علينا</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- القسم الرئيسي (Hero) -->
+    <section class="hero">
+        <div class="container">
+            <h1>أدوات قوية لمسوقي المنظمات غير الربحية</h1>
+            <p>نحن نوصي فقط بالمنصات الإلكترونية التي نستخدمها بأنفسنا لتنمية أعمالنا والمنظمات غير الربحية التي نستشارها. لا مبالغات هنا—فقط الأدوات الأساسية لنجاح تسويق مؤسستك.</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- إفصاح هام -->
+        <div class="disclosure">
+            <p><i class="fas fa-heart" style="color: #ff7f5c;"></i> <strong>إفصاح هام: يرجى القراءة قبل المتابعة</strong></p>
+            <p>نحن شركاء تابعون لبعض هذه الأدوات، مما يعني أنه إذا نقرت على رابط إحدى الأدوات وقمت بعملية شراء، فقد نحصل على عمولة دون أي تكلفة إضافية عليك. توصياتنا مبنية على خبرة عميقة ومعرفة بهذه الشركات ومنتجاتها، ونوصي بها لأنها مفيدة حقًا وليست بسبب العمولات الصغيرة التي قد نتلقاها. ابحث عن رمز <i class="fas fa-heart" style="color: #ff7f5c;"></i> للخصومات.</p>
+        </div>
+
+        <!-- الأدوات الموصى بها (Top Recommended) -->
+        <section>
+            <h2>أفضل الأدوات الموصى بها</h2>
+            <div class="tools-grid">
+                <!-- ActiveCampaign -->
+                <div class="tool-card">
+                    <img src="active comp.png" alt="فريق RiseUp Solutions">
+                    <h3>ActiveCampaign</h3>
+                    <span class="tool-badge"><i class="fas fa-heart" style="color: #ff7f5c;"></i> خصم خاص</span>
+                    <p>منصة التسويق عبر البريد الإلكتروني وإدارة علاقات العملاء (CRM) الوحيدة التي نستخدمها. سهلة الاستخدام، تقطيع المشتركين لمجموعات، وأتمتة قوية توفر عليك وقتاً ثميناً.</p>
+                    <a href="#" class="tool-link">اكتشف الأداة <i class="fas fa-arrow-left"></i></a>
+                </div>
+
+                <!-- Website Care (خدمة RiseUp Solutions) -->
+                <div class="tool-card">
+                    <img src="webcare.png" alt="فريق RiseUp Solutions">
+                    <h3>رعاية المواقع من RiseUp Solutions</h3>
+                    <span class="tool-badge"><i class="fas fa-heart"></i> خدمتنا</span>
+                    <p>حل متكامل لاستضافة وصيانة وأمان ودعم مواقع ووردبريس. خطط مرنة تبدأ من 49$ شهرياً. دعنا نعتني بموقعك حتى تركز على تنمية مؤسستك.</p>
+                    <a href="#" class="tool-link">اكتشف الخدمة <i class="fas fa-arrow-left"></i></a>
+                </div>
+
+                <!-- OptinMonster -->
+                <div class="tool-card">
+                    <img src="option.png" alt="فريق RiseUp Solutions">
+                    <h3>OptinMonster</h3>
+                    <span class="tool-badge"><i class="fas fa-heart" style="color: #ff7f5c;"></i> خصم</span>
+                    <p>حوّل زوار موقعك إلى مشتركين وعملاء محتملين باستخدام نماذج وإعلانات منبثقة جذابة. منشئ سحب وإفلات قوي لزيادة مدى وصول مؤسستك.</p>
+                    <a href="#" class="tool-link">اكتشف الأداة <i class="fas fa-arrow-left"></i></a>
+                </div>
+
+                <!-- Elementor Pro -->
+                <div class="tool-card">
+                    <img src="elemen.png" alt="فريق RiseUp Solutions">
+                    <h3>Elementor Pro</h3>
+                    <span class="tool-badge">الأكثر استخداماً</span>
+                    <p>منشئ المواقع المفضل لدينا. واجهة سحب وإفلات سهلة وقوية لتصميم مواقع جميلة. سعر معقول (49$ سنوياً) مع مزيج نادر: قوي، سهل، وغير مكلف.</p>
+                    <a href="#" class="tool-link">اكتشف الأداة <i class="fas fa-arrow-left"></i></a>
+                </div>
+
+                <!-- Elfsight Widgets -->
+                <div class="tool-card">
+                    <img src="elfest.png" alt="فريق RiseUp Solutions">
+                    <h3>Elfsight Widgets</h3>
+                    <span class="tool-badge"><i class="fas fa-heart" style="color: #ff7f5c;"></i> خصم</span>
+                    <p>أكثر من 50 أداة جاهزة للتشغيل السريع (موافقة الكوكيز، خلاصة إنستغرام، خرائط جوجل التفاعلية) دون الحاجة إلى مبرمج. نوفر الوقت والمال.</p>
+                    <a href="#" class="tool-link">اكتشف الأداة <i class="fas fa-arrow-left"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- فئة: التسويق عبر البريد الإلكتروني والأتمتة -->
+        <section class="category-section">
+            <h2 class="category-title">التسويق عبر البريد الإلكتروني والأتمتة</h2>
+            <div class="tools-grid">
+                <!-- ActiveCampaign (مكرر لكن يمكن وضعه) -->
+                <div class="tool-card">
+                    <img src="active comp.png" alt="فريق RiseUp Solutions">
+                    <h3>ActiveCampaign</h3>
+                    <span class="tool-badge"><i class="fas fa-heart" style="color: #ff7f5c;"></i> خصم</span>
+                    <p>منصة CRM والتسويق عبر البريد الإلكتروني الوحيدة التي نستخدمها. مصممة بعناية لتناسب احتياجات المنظمات غير الربحية.</p>
+                    <a href="#" class="tool-link">اكتشف الأداة <i class="fas fa-arrow-left"></i></a>
+                </div>
+                <!-- CountdownMail -->
+                <div class="tool-card">
+                    <img src="cont2.png" alt="فريق RiseUp Solutions">
+                    <h3>CountdownMail</h3>
+                    <p>أضف مؤقتات عد تنازلي حية لبريدك الإلكتروني لخلق حالة إلحاح وزيادة التحويلات. تصميم أنيق يناسب جميع الأجهزة.</p>
+                    <a href="#" class="tool-link">اكتشف الأداة <i class="fas fa-arrow-left"></i></a>
+                </div>
+                <!-- Salesmsg Texting -->
+                <div class="tool-card">
+                    <img src="sales.png" alt="فريق RiseUp Solutions">
+                    <h3>Salesmsg</h3>
+                    <p>متوسط فتح البريد الإلكتروني 20%، لكن الرسائل النصية تصل إلى 100%! لوحة تحكم بسيطة لإرسال واستقبال وإدارة المحادثات النصية، مع أتمتة لبدء محادثات جذابة.</p>
+                    <a href="#" class="tool-link">اكتشف الأداة <i class="fas fa-arrow-left"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- فئة: منشئي المواقع والصفحات -->
+        <section class="category-section">
+            <h2 class="category-title">منشئي المواقع والصفحات</h2>
+            <div class="tools-grid">
+                <!-- Elementor Pro -->
+                <div class="tool-card">
+                    <img src="elemen.png" alt="فريق RiseUp Solutions">
+                    <h3>Elementor Pro</h3>
+                    <p>منشئ السحب والإفلات المفضل لدينا. أنشئ صفحات جميلة بسهولة وقوة. سعر معقول 49$ سنوياً.</p>
+                    <a href="#" class="tool-link">اكتشف الأداة <i class="fas fa-arrow-left"></i></a>
+                </div>
+                <!-- Leadpages -->
+                <div class="tool-card">
+                    <img src="leadpages.png" alt="فريق RiseUp Solutions">
+                    <h3>Leadpages</h3>
+                    <p>أداة قوية لإنشاء صفحات هبوط مخصصة للحملات والعروض الجديدة. سريعة وسهلة عندما لا يمكنك البناء على موقعك الخاص.</p>
+                    <a href="#" class="tool-link">اكتشف الأداة <i class="fas fa-arrow-left"></i></a>
+                </div>
+                <!-- DonorBox -->
+                <div class="tool-card">
+                     <img src="donor.png" alt="فريق RiseUp Solutions">
+                    <h3>DonorBox</h3>
+                    <p>منصة التبرع عبر الإنترنت المفضلة لدينا. قوية بما يكفي لمضاعفة التبرعات وبسيطة لدرجة يمكن لأي شخص استخدامها. ابدأ في غضون 30 دقيقة.</p>
+                    <a href="#" class="tool-link">اكتشف الأداة <i class="fas fa-arrow-left"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- فئة: استضافة وأمان المواقع -->
+        <section class="category-section">
+            <h2 class="category-title">استضافة وأمان المواقع</h2>
+            <div class="tools-grid">
+                <!-- Website Care (RiseUp) -->
+                <div class="tool-card">
+                    <img src="webcare.png" alt="فريق RiseUp Solutions">
+                    <h3>رعاية المواقع من RiseUp Solutions</h3>
+                    <span class="tool-badge"><i class="fas fa-heart"></i> خدمتنا</span>
+                    <p>استضافة متميزة، أمان حديدي، سرعة فائقة، ودعم ودي. خطط تبدأ من 49$ شهرياً.</p>
+                    <a href="#" class="tool-link">اكتشف الخدمة <i class="fas fa-arrow-left"></i></a>
+                </div>
+                <!-- Elementor Pro (يمكن تكراره) -->
+                <div class="tool-card">
+                    <img src="elemen.png" alt="فريق RiseUp Solutions">
+                    <h3>Elementor Pro</h3>
+                    <p>منشئ المواقع الذي نعتمد عليه لجميع مواقعنا. قوي وسهل.</p>
+                    <a href="#" class="tool-link">اكتشف الأداة <i class="fas fa-arrow-left"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- فئة: إضافات وأدوات الموقع -->
+        <section class="category-section">
+            <h2 class="category-title">إضافات وأدوات الموقع</h2>
+            <div class="tools-grid">
+                <!-- OptinMonster -->
+                <div class="tool-card">
+                   <img src="option.png" alt="فريق RiseUp Solutions">
+                    <h3>OptinMonster</h3>
+                    <p>حوّل حركة المرور إلى مشتركين باستخدام النماذج والإعلانات المنبثقة.</p>
+                    <a href="#" class="tool-link">اكتشف الأداة <i class="fas fa-arrow-left"></i></a>
+                </div>
+                <!-- Elfsight -->
+                <div class="tool-card">
+                    <img src="elfest.png" alt="فريق RiseUp Solutions">
+                    <h3>Elfsight Widgets</h3>
+                    <p>أدوات جاهزة لأي منصة: ووردبريس، سكويرسبيس، وغيرها. بدون برمجة.</p>
+                    <a href="#" class="tool-link">اكتشف الأداة <i class="fas fa-arrow-left"></i></a>
+                </div>
+                <!-- LiveChat -->
+                <div class="tool-card">
+                    <img src="chat.png" alt="فريق RiseUp Solutions">
+                    <h3>LiveChat</h3>
+                    <span class="tool-badge"><i class="fas fa-heart" style="color: #ff7f5c;"></i> مجاني للمنظمات غير الربحية</span>
+                    <p>أداة الدردشة المباشرة الأفضل. 51% من العملاء يفضلون الدردشة. تخصيص سهل وروبوتات دردشة مرنة.</p>
+                    <a href="#" class="tool-link">اكتشف الأداة <i class="fas fa-arrow-left"></i></a>
+                </div>
+                <!-- Proof -->
+                <div class="tool-card">
+                    <img src="proof.png" alt="فريق RiseUp Solutions">
+                    <h3>Proof</h3>
+                    <p>عزز مصداقيتك بإشعارات اجتماعية تظهر تفاعلات حقيقية على موقعك (مثل تبرعات أو اشتراكات) لتحفيز الزوار.</p>
+                    <a href="#" class="tool-link">اكتشف الأداة <i class="fas fa-arrow-left"></i></a>
+                </div>
+                <!-- RightMessage -->
+                <div class="tool-card">
+                     <img src="right.png" alt="فريق RiseUp Solutions">
+                    <h3>RightMessage</h3>
+                    <p>تخصيص المحتوى حسب الزائر: العناوين، النصوص، الصور. بدون برمجة. وفر تجربة مخصصة لجمهورك.</p>
+                    <a href="#" class="tool-link">اكتشف الأداة <i class="fas fa-arrow-left"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- فئة: أدوات التصميم الجرافيكي -->
+        <section class="category-section">
+            <h2 class="category-title">أدوات التصميم الجرافيكي</h2>
+            <div class="tools-grid">
+                <!-- Canva -->
+                <div class="tool-card">
+                    <img src="canva.png" alt="فريق RiseUp Solutions">
+                    <h3>Canva</h3>
+                    <span class="tool-badge"><i class="fas fa-heart" style="color: #ff7f5c;"></i> خصم</span>
+                    <p>أكثر من 50,000 قالب لتصميم دعابات، صور تواصل اجتماعي، وبانرات بريدية. واجهة سحب وإفلات سهلة، تتعلمها في 23 ثانية.</p>
+                    <a href="#" class="tool-link">اكتشف الأداة <i class="fas fa-arrow-left"></i></a>
+                </div>
+                <!-- 99designs -->
+                <div class="tool-card">
+                    <img src="99.png" alt="فريق RiseUp Solutions">
+                    <h3>99designs</h3>
+                    <p>تحتاج تصميم احترافي؟ اكتب موجزاً بسيطاً، وافتح المسابقة للمصممين، واستقبل أكثر من 40 فكرة، ثم اختر التصميم الفائز.</p>
+                    <a href="#" class="tool-link">اكتشف الأداة <i class="fas fa-arrow-left"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- فئة: تطبيقات إدارة المشاريع -->
+        <section class="category-section">
+            <h2 class="category-title">تطبيقات إدارة المشاريع</h2>
+            <div class="tools-grid">
+                <!-- Monday.com -->
+                <div class="tool-card">
+                   <img src="mond.png" alt="فريق RiseUp Solutions">
+                    <h3>Monday.com</h3>
+                    <p>تصور حملاتك ومهامك ومواعيدك النهائية بسهولة. يجعل إدارة مشاريع التسويق المعقدة أكثر بساطة.</p>
+                    <a href="#" class="tool-link">اكتشف الأداة <i class="fas fa-arrow-left"></i></a>
+                </div>
+                <!-- SocialPilot -->
+                <div class="tool-card">
+                    <img src="soc.png" alt="فريق RiseUp Solutions">
+                    <h3>SocialPilot</h3>
+                    <p>جدولة ونشر محتوى وسائل التواصل الاجتماعي بسهولة. عرض تقويم المحتوى لجميع الحسابات، وإنشاء منشورات لعدة شبكات من مكان واحد.</p>
+                    <a href="#" class="tool-link">اكتشف الأداة <i class="fas fa-arrow-left"></i></a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- الفوتر (مأخوذ من الصفحة الرئيسية) -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>RiseUp Solutions</h4>
+                    <p>وكالة تسويق رقمي متخصصة في دعم المؤسسات غير الربحية لتعزيز وجودها الرقمي وتحقيق أهدافها.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>روابط سريعة</h4>
+                    <ul>
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="index.html#services">الخدمات</a></li>
+                        <li><a href="index.html#testimonials">الشهادات</a></li>
+                        <li><a href="google-grants.html">منح إعلانات جوجل</a></li>
+                        <li><a href="sm.html">منح مايكروسوفت المجانية</a></li>
+                        <li><a href="digital advertsiting.html">الإعلانات الرقمية</a></li>
+                        <li><a href="index.html#partners">شركاؤنا</a></li>
+                        <li><a href="tools.html">الأدوات</a></li>
+                        <li><a href="#">المدونة</a></li>
+                        <li><a href="start.html">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>خدماتنا</h4>
+                    <ul>
+                        <li><a href="google-grants.html">إعلانات جوجل</a></li>
+                        <li><a href="index.html#services">تصميم مواقع</a></li>
+                        <li><a href="index.html#services">إعلانات فيسبوك</a></li>
+                        <li><a href="index.html#services">تحسين محركات البحث</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>تواصل معنا</h4>
+                    <p><i class="fas fa-envelope"></i> info@o2work.online</p>
+                    <p><i class="fas fa-phone"></i> 967-771237999+</p>
+                    <p><i class="fas fa-map-marker-alt"></i> اليمن - صنعاء- ارتل</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>جميع الحقوق محفوظة-© 2026 RiseUp Solutions</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
