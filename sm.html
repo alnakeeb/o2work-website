@@ -110,6 +110,36 @@
             box-shadow: 0 15px 25px rgba(255, 127, 92, 0.4);
         }
 
+        /* ===== زر تبديل اللغات ===== */
+        .lang-toggle {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 6px 12px;
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-soft));
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(10, 44, 61, 0.2);
+            text-decoration: none;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .lang-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(10, 44, 61, 0.3);
+            background: linear-gradient(135deg, var(--primary-soft), var(--accent-coral));
+            color: white;
+        }
+
+        .lang-toggle i {
+            font-size: 1.1rem;
+        }
+
         /* الهيدر */
         header {
             background-color: var(--white);
@@ -132,19 +162,43 @@
             display: block;
         }
 
+        /* تحسين شريط التنقل: جميع الأزرار في سطر واحد على الشاشات العريضة */
+        nav {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            overflow-x: auto; /* للتمرير الأفقي عند الضرورة على الشاشات الصغيرة */
+        }
+
         nav ul {
             display: flex;
             list-style: none;
-            gap: 30px;
-            flex-wrap: wrap;
+            gap: 20px; /* تقليل المسافة قليلاً للمساعدة في السطر الواحد */
+            flex-wrap: nowrap; /* منع الالتفاف إلى سطرين على الشاشات الكبيرة */
+            align-items: center;
+            margin: 0;
+            padding: 0;
         }
 
+        /* على الشاشات الصغيرة جداً، نسمح بالتمرير الأفقي بدلاً من الالتفاف */
+        @media (max-width: 1100px) {
+            nav {
+                justify-content: flex-start;
+            }
+            nav ul {
+                gap: 15px;
+                flex-wrap: nowrap; /* نبقى nowrap ونعتمد على overflow-x */
+            }
+        }
+
+        /* إذا أردنا أن تبقى العناصر في سطر واحد حتى في أصغر الأحجام مع التمرير، نضيف overflow-x */
         nav ul li a {
             text-decoration: none;
             color: var(--text-dark);
             font-weight: 600;
             transition: color 0.3s;
-            font-size: 1.1rem;
+            font-size: 1rem; /* تقليل طفيف للخط لاستيعاب المزيد */
+            white-space: nowrap;
         }
 
         nav ul li a:hover,
@@ -327,8 +381,12 @@
                 flex-direction: column;
                 gap: 15px;
             }
+            nav {
+                width: 100%;
+                justify-content: center;
+            }
             nav ul {
-                gap: 15px;
+                gap: 12px;
                 justify-content: center;
             }
             .grant-hero .container {
@@ -354,11 +412,16 @@
                     <li><a href="index.html#services">الخدمات</a></li>
                     <li><a href="google-grants.html">منح جوجل الاعلانية</a></li>
                     <li><a href="sm.html">منح مايكروسوفت المجانية</a></li>
-                    <li><a href="digital advertsiting.html">الاعلانات الرقمية</a></li>
+                    <li><a href="digital-advertising.html">الاعلانات الرقمية</a></li>
                     <li><a href="tools.html">أدواتنا</a></li>
                     <li><a href="index.html#partners">شركاؤنا</a></li>
                     <li><a href="index.html#testimonials">عملاؤنا</a></li>
                     <li><a href="about.html">تعرف علينا</a></li>
+                    <li>
+                        <a href="sm-en.html" class="lang-toggle">
+                            <i class="fas fa-globe"></i> English
+                        </a>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -473,7 +536,7 @@
                         <li><a href="index.html#testimonials">الشهادات</a></li>
                         <li><a href="google-grants.html">منح إعلانات جوجل</a></li>
                         <li><a href="sm.html">منح مايكروسوفت المجانية</a></li>
-                       <li><a href="digital advertsiting.html">الاعلانات الرقمية</a></li>
+                       <li><a href="digital-advertising.html">الاعلانات الرقمية</a></li>
                         <li><a href="tools.html">أدواتنا</a></li>
                         <li><a href="index.html#partners">شركاؤنا</a></li>
                         <li><a href="about.html">تعرف علينا</a></li>
