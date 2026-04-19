@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RiseUp Solutions | Nonprofit Marketing Tools</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #f9fafc;
+            color: #1e2b3a;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        :root {
+            --primary-dark: #0a2c3d;
+            --primary-soft: #3a6b7c;
+            --accent-mint: #b4e6d9;
+            --accent-coral: #ff7f5c;
+            --text-dark: #1e2b3a;
+            --text-light: #f0f4f8;
+            --bg-light: #f9fafc;
+            --white: #ffffff;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --border-radius: 24px;
+        }
+
+        h1, h2, h3 {
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            color: var(--primary-dark);
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 70px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-soft), var(--accent-coral));
+            border-radius: 4px;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #4a627a;
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        /* Language toggle button */
+        .lang-toggle {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 6px 12px;
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-soft));
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(10, 44, 61, 0.2);
+            text-decoration: none;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .lang-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(10, 44, 61, 0.3);
+            background: linear-gradient(135deg, var(--primary-soft), var(--accent-coral));
+            color: white;
+        }
+
+        .lang-toggle i {
+            font-size: 1.1rem;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo img {
+            height: 100px;
+            width: auto;
+            display: block;
+        }
+
+        nav {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            overflow-x: auto;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+            flex-wrap: nowrap;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        @media (max-width: 1100px) {
+            nav {
+                justify-content: flex-start;
+            }
+            nav ul {
+                gap: 15px;
+            }
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            transition: color 0.3s;
+            font-size: 1rem;
+            white-space: nowrap;
+        }
+
+        nav ul li a:hover,
+        nav ul li a.active {
+            color: var(--accent-coral);
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(145deg, #ffffff 0%, #eef5f9 100%);
+            padding: 4rem 0 3rem 0;
+            text-align: center;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #2c3e50;
+            max-width: 800px;
+            margin: 0 auto 1.5rem;
+        }
+
+        /* Tools grid */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 3rem 0;
+        }
+
+        .tool-card {
+            background: var(--white);
+            padding: 2rem 1.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: transform 0.2s ease, box-shadow 0.2s;
+            border: 1px solid rgba(0,0,0,0.02);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 30px 45px -15px rgba(58, 107, 124, 0.25);
+        }
+
+        .tool-image {
+            width: 100%;
+            height: 180px;
+            background-color: #f0f7fa;
+            border-radius: 16px;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-soft);
+            font-weight: 600;
+            font-size: 1.2rem;
+            border: 2px dashed var(--primary-soft);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .tool-image span {
+            background: rgba(255,255,255,0.9);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            color: var(--primary-dark);
+        }
+
+        .tool-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 0.8rem;
+            color: var(--primary-dark);
+        }
+
+        .tool-card .tool-badge {
+            display: inline-block;
+            background: var(--accent-mint);
+            color: var(--primary-dark);
+            padding: 0.3rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            width: fit-content;
+        }
+
+        .tool-card p {
+            color: #475569;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .tool-link {
+            color: var(--accent-coral);
+            font-weight: 600;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: auto;
+        }
+
+        .tool-link:hover {
+            color: var(--primary-soft);
+        }
+
+        .category-section {
+            margin: 4rem 0;
+        }
+
+        .category-title {
+            font-size: 2rem;
+            color: var(--primary-soft);
+            margin-bottom: 2rem;
+            border-left: 6px solid var(--accent-coral);
+            padding-left: 1rem;
+        }
+
+        .disclosure {
+            background: #fff3e0;
+            border-left: 6px solid var(--accent-coral);
+            padding: 1.5rem 2rem;
+            border-radius: 20px;
+            margin: 2rem 0 3rem;
+            font-size: 1rem;
+        }
+
+        .disclosure i {
+            color: var(--accent-coral);
+            margin-right: 0.5rem;
+        }
+
+        footer {
+            background-color: #0a1c2a;
+            color: #b0c4d9;
+            padding: 60px 0 30px;
+            margin-top: 5rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: #b0c4d9;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--accent-coral);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-coral);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #1e3a4a;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            nav ul {
+                gap: 12px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .category-title {
+                border-left: none;
+                border-right: 6px solid var(--accent-coral);
+                padding-right: 1rem;
+                text-align: right;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <!-- Logo on top left (LTR) -->
+            <a href="index-en.html" class="logo">
+                <img src="logo.png" alt="RiseUp Solutions Logo">
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index-en.html">Home</a></li>
+                    <li><a href="index-en.html#services">Services</a></li>
+                    <li><a href="google-grants-en.html">Google Grants</a></li>
+                    <li><a href="sm-en.html">Microsoft Grants</a></li>
+                    <li><a href="digital-advertising-en.html">Digital Advertising</a></li>
+                    <li><a href="tools-en.html" class="active">Our Tools</a></li>
+                    <li><a href="index-en.html#partners">Partners</a></li>
+                    <li><a href="index-en.html#testimonials">Clients</a></li>
+                    <li><a href="about-en.html">About Us</a></li>
+                    <li>
+                        <a href="tools.html" class="lang-toggle">
+                            <i class="fas fa-globe"></i> العربية
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Powerful Tools for Nonprofit Marketers</h1>
+            <p>We only recommend platforms we use ourselves to grow our business and the nonprofits we consult. No fluff here—just the essential tools for your organization's marketing success.</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- Disclosure -->
+        <div class="disclosure">
+            <p><i class="fas fa-heart" style="color: #ff7f5c;"></i> <strong>Important Disclosure: Please read before proceeding</strong></p>
+            <p>We are affiliate partners for some of these tools, meaning if you click a link and make a purchase, we may receive a commission at no extra cost to you. Our recommendations are based on deep experience and knowledge of these companies and products. We recommend them because they are genuinely helpful, not because of the small commissions we might earn. Look for the <i class="fas fa-heart" style="color: #ff7f5c;"></i> icon for discounts.</p>
+        </div>
+
+        <!-- Top Recommended Tools -->
+        <section>
+            <h2>Top Recommended Tools</h2>
+            <div class="tools-grid">
+                <!-- ActiveCampaign -->
+                <div class="tool-card">
+                    <img src="active comp.png" alt="ActiveCampaign logo" style="width: 100%; border-radius: 12px; margin-bottom: 1rem;">
+                    <h3>ActiveCampaign</h3>
+                    <span class="tool-badge"><i class="fas fa-heart" style="color: #ff7f5c;"></i> Special Discount</span>
+                    <p>The only email marketing and CRM platform we use. Easy to use, powerful segmentation, and automation that saves you valuable time.</p>
+                    <a href="#" class="tool-link">Discover Tool <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <!-- Website Care by RiseUp Solutions -->
+                <div class="tool-card">
+                    <img src="webcare.png" alt="Website Care" style="width: 100%; border-radius: 12px; margin-bottom: 1rem;">
+                    <h3>Website Care by RiseUp Solutions</h3>
+                    <span class="tool-badge"><i class="fas fa-heart"></i> Our Service</span>
+                    <p>Complete solution for WordPress hosting, maintenance, security, and support. Flexible plans starting at $49/month. Let us handle your website so you can focus on growing your organization.</p>
+                    <a href="#" class="tool-link">Discover Service <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <!-- OptinMonster -->
+                <div class="tool-card">
+                    <img src="option.png" alt="OptinMonster" style="width: 100%; border-radius: 12px; margin-bottom: 1rem;">
+                    <h3>OptinMonster</h3>
+                    <span class="tool-badge"><i class="fas fa-heart" style="color: #ff7f5c;"></i> Discount</span>
+                    <p>Convert your website visitors into subscribers and leads using attractive popups and forms. Powerful drag-and-drop builder to increase your organization's reach.</p>
+                    <a href="#" class="tool-link">Discover Tool <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <!-- Elementor Pro -->
+                <div class="tool-card">
+                    <img src="elemen.png" alt="Elementor Pro" style="width: 100%; border-radius: 12px; margin-bottom: 1rem;">
+                    <h3>Elementor Pro</h3>
+                    <span class="tool-badge">Most Used</span>
+                    <p>Our favorite website builder. Easy and powerful drag-and-drop interface to design beautiful websites. Affordable ($49/year) with a rare mix: powerful, easy, and inexpensive.</p>
+                    <a href="#" class="tool-link">Discover Tool <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <!-- Elfsight Widgets -->
+                <div class="tool-card">
+                    <img src="elfest.png" alt="Elfsight Widgets" style="width: 100%; border-radius: 12px; margin-bottom: 1rem;">
+                    <h3>Elfsight Widgets</h3>
+                    <span class="tool-badge"><i class="fas fa-heart" style="color: #ff7f5c;"></i> Discount</span>
+                    <p>Over 50 ready-to-use widgets (cookie consent, Instagram feed, interactive Google Maps) without needing a developer. Saves time and money.</p>
+                    <a href="#" class="tool-link">Discover Tool <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Category: Email Marketing & Automation -->
+        <section class="category-section">
+            <h2 class="category-title">Email Marketing & Automation</h2>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <img src="active comp.png" alt="ActiveCampaign" style="width: 100%; border-radius: 12px; margin-bottom: 1rem;">
+                    <h3>ActiveCampaign</h3>
+                    <span class="tool-badge"><i class="fas fa-heart" style="color: #ff7f5c;"></i> Discount</span>
+                    <p>The only CRM and email marketing platform we use. Carefully designed to meet the needs of nonprofits.</p>
+                    <a href="#" class="tool-link">Discover Tool <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="tool-card">
+                    <img src="cont2.png" alt="CountdownMail" style="width: 100%; border-radius: 12px; margin-bottom: 1rem;">
+                    <h3>CountdownMail</h3>
+                    <p>Add live countdown timers to your emails to create urgency and increase conversions. Sleek design that works on all devices.</p>
+                    <a href="#" class="tool-link">Discover Tool <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="tool-card">
+                    <img src="sales.png" alt="Salesmsg" style="width: 100%; border-radius: 12px; margin-bottom: 1rem;">
+                    <h3>Salesmsg</h3>
+                    <p>Average email open rate is 20%, but text messages reach 100%! Simple dashboard to send, receive, and manage text conversations, with automation to start engaging chats.</p>
+                    <a href="#" class="tool-link">Discover Tool <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Category: Website & Page Builders -->
+        <section class="category-section">
+            <h2 class="category-title">Website & Page Builders</h2>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <img src="elemen.png" alt="Elementor Pro" style="width: 100%; border-radius: 12px; margin-bottom: 1rem;">
+                    <h3>Elementor Pro</h3>
+                    <p>Our favorite drag-and-drop builder. Create beautiful pages easily and powerfully. Affordable at $49/year.</p>
+                    <a href="#" class="tool-link">Discover Tool <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="tool-card">
+                    <img src="leadpages.png" alt="Leadpages" style="width: 100%; border-radius: 12px; margin-bottom: 1rem;">
+                    <h3>Leadpages</h3>
+                    <p>Powerful tool for creating custom landing pages for campaigns and new offers. Fast and easy when you can't build on your own site.</p>
+                    <a href="#" class="tool-link">Discover Tool <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="tool-card">
+                    <img src="donor.png" alt="DonorBox" style="width: 100%; border-radius: 12px; margin-bottom: 1rem;">
+                    <h3>DonorBox</h3>
+                    <p>Our favorite online donation platform. Powerful enough to double donations yet simple enough for anyone to use. Get started in 30 minutes.</p>
+                    <a href="#" class="tool-link">Discover Tool <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Category: Hosting & Website Security -->
+        <section class="category-section">
+            <h2 class="category-title">Hosting & Website Security</h2>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <img src="webcare.png" alt="Website Care" style="width: 100%; border-radius: 12px; margin-bottom: 1rem;">
+                    <h3>Website Care by RiseUp Solutions</h3>
+                    <span class="tool-badge"><i class="fas fa-heart"></i> Our Service</span>
+                    <p>Premium hosting, ironclad security, blazing speed, and friendly support. Plans starting at $49/month.</p>
+                    <a href="#" class="tool-link">Discover Service <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="tool-card">
+                    <img src="elemen.png" alt="Elementor Pro" style="width: 100%; border-radius: 12px; margin-bottom: 1rem;">
+                    <h3>Elementor Pro</h3>
+                    <p>The website builder we rely on for all our sites. Powerful and easy.</p>
+                    <a href="#" class="tool-link">Discover Tool <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Category: Plugins & Site Tools -->
+        <section class="category-section">
+            <h2 class="category-title">Plugins & Site Tools</h2>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <img src="option.png" alt="OptinMonster" style="width: 100%; border-radius: 12px; margin-bottom: 1rem;">
+                    <h3>OptinMonster</h3>
+                    <p>Convert traffic into subscribers using popups and forms.</p>
+                    <a href="#" class="tool-link">Discover Tool <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="tool-card">
+                    <img src="elfest.png" alt="Elfsight Widgets" style="width: 100%; border-radius: 12px; margin-bottom: 1rem;">
+                    <h3>Elfsight Widgets</h3>
+                    <p>Ready-to-use widgets for any platform: WordPress, Squarespace, and more. No coding required.</p>
+                    <a href="#" class="tool-link">Discover Tool <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="tool-card">
+                    <img src="chat.png" alt="LiveChat" style="width: 100%; border-radius: 12px; margin-bottom: 1rem;">
+                    <h3>LiveChat</h3>
+                    <span class="tool-badge"><i class="fas fa-heart" style="color: #ff7f5c;"></i> Free for Nonprofits</span>
+                    <p>The best live chat tool. 51% of customers prefer chat. Easy customization and flexible chatbots.</p>
+                    <a href="#" class="tool-link">Discover Tool <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="tool-card">
+                    <img src="proof.png" alt="Proof" style="width: 100%; border-radius: 12px; margin-bottom: 1rem;">
+                    <h3>Proof</h3>
+                    <p>Boost credibility with social notifications showing real interactions (like donations or signups) to motivate visitors.</p>
+                    <a href="#" class="tool-link">Discover Tool <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="tool-card">
+                    <img src="right.png" alt="RightMessage" style="width: 100%; border-radius: 12px; margin-bottom: 1rem;">
+                    <h3>RightMessage</h3>
+                    <p>Personalize content per visitor: headlines, text, images. No coding. Deliver a tailored experience to your audience.</p>
+                    <a href="#" class="tool-link">Discover Tool <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Category: Graphic Design Tools -->
+        <section class="category-section">
+            <h2 class="category-title">Graphic Design Tools</h2>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <img src="canva.png" alt="Canva" style="width: 100%; border-radius: 12px; margin-bottom: 1rem;">
+                    <h3>Canva</h3>
+                    <span class="tool-badge"><i class="fas fa-heart" style="color: #ff7f5c;"></i> Discount</span>
+                    <p>Over 50,000 templates for flyers, social media graphics, and email banners. Easy drag-and-drop interface, learn it in 23 seconds.</p>
+                    <a href="#" class="tool-link">Discover Tool <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="tool-card">
+                    <img src="99.png" alt="99designs" style="width: 100%; border-radius: 12px; margin-bottom: 1rem;">
+                    <h3>99designs</h3>
+                    <p>Need professional design? Write a simple brief, launch a contest for designers, receive over 40 ideas, then choose the winning design.</p>
+                    <a href="#" class="tool-link">Discover Tool <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Category: Project Management Apps -->
+        <section class="category-section">
+            <h2 class="category-title">Project Management Apps</h2>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <img src="mond.png" alt="Monday.com" style="width: 100%; border-radius: 12px; margin-bottom: 1rem;">
+                    <h3>Monday.com</h3>
+                    <p>Visualize your campaigns, tasks, and deadlines easily. Makes managing complex marketing projects simpler.</p>
+                    <a href="#" class="tool-link">Discover Tool <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="tool-card">
+                    <img src="soc.png" alt="SocialPilot" style="width: 100%; border-radius: 12px; margin-bottom: 1rem;">
+                    <h3>SocialPilot</h3>
+                    <p>Schedule and publish social media content easily. View content calendar for all accounts, create posts for multiple networks from one place.</p>
+                    <a href="#" class="tool-link">Discover Tool <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>RiseUp Solutions</h4>
+                    <p>A digital marketing agency specialized in supporting nonprofits to enhance their digital presence and achieve their goals.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index-en.html">Home</a></li>
+                        <li><a href="index-en.html#services">Services</a></li>
+                        <li><a href="index-en.html#testimonials">Testimonials</a></li>
+                        <li><a href="google-grants-en.html">Google Ad Grants</a></li>
+                        <li><a href="sm-en.html">Microsoft Free Grants</a></li>
+                        <li><a href="digital-advertising-en.html">Digital Advertising</a></li>
+                        <li><a href="index-en.html#partners">Partners</a></li>
+                        <li><a href="tools-en.html">Our Tools</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="start-en.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Our Services</h4>
+                    <ul>
+                        <li><a href="google-grants-en.html">Google Ads</a></li>
+                        <li><a href="index-en.html#services">Website Design</a></li>
+                        <li><a href="index-en.html#services">Facebook Ads</a></li>
+                        <li><a href="index-en.html#services">SEO</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <p><i class="fas fa-envelope"></i> info@o2work.online</p>
+                    <p><i class="fas fa-phone"></i> +967-771237999</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Yemen - Sana'a - Artel</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© 2026 RiseUp Solutions. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
