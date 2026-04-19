@@ -4,38 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RiseUp Solutions | منح Google الإعلانية للمنظمات غير الربحية</title>
-    <!-- Google Fonts: خط عربي عصري (مثل الصفحة الرئيسية) -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome للأيقونات -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Cairo', sans-serif;
-            background-color: #f9fafc;
-            color: #1e2b3a;
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* ألوان رئيسية متوافقة مع الصفحة الرئيسية */
         :root {
-            --primary-dark: #0a2c3d;      /* أزرق داكن */
-            --primary-soft: #3a6b7c;       /* أزرق مخضر */
-            --accent-mint: #b4e6d9;        /* أخضر نعناعي فاتح */
-            --accent-coral: #ff7f5c;        /* برتقالي مرجاني */
+            --primary-dark: #0a2c3d;
+            --primary-soft: #3a6b7c;
+            --accent-mint: #b4e6d9;
+            --accent-coral: #ff7f5c;
             --text-dark: #1e2b3a;
             --text-light: #f0f4f8;
             --bg-light: #f9fafc;
@@ -44,76 +23,130 @@
             --border-radius: 24px;
         }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
         h1, h2, h3 {
             font-weight: 700;
             line-height: 1.3;
         }
 
         h1 {
-            font-size: 2.8rem;
+            font-size: clamp(2.3rem, 4vw, 3.6rem);
             color: var(--primary-dark);
-            margin-bottom: 1rem;
         }
 
         h2 {
-            font-size: 2.2rem;
+            font-size: clamp(1.9rem, 3vw, 2.5rem);
             color: var(--primary-dark);
-            margin-bottom: 2rem;
+            margin-bottom: 1.2rem;
             position: relative;
             display: inline-block;
         }
-        h2:after {
+
+        h2::after {
             content: '';
             position: absolute;
             bottom: -10px;
             right: 0;
-            width: 70px;
+            width: 72px;
             height: 4px;
             background: linear-gradient(90deg, var(--primary-soft), var(--accent-coral));
-            border-radius: 4px;
+            border-radius: 999px;
         }
 
         .section-subtitle {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: #4a627a;
-            margin-bottom: 3rem;
+            margin-bottom: 2.5rem;
             font-weight: 400;
+            max-width: 760px;
         }
 
-        /* الهيدر (مطابق للصفحة الرئيسية) */
         header {
-            background-color: var(--white);
-            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
         }
 
         .header-content {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            padding: 15px 0;
+            gap: 16px;
+            padding: 12px 0;
+            flex-wrap: nowrap;
+        }
+
+        .logo {
+            display: inline-flex;
+            flex-shrink: 0;
         }
 
         .logo img {
-            height: 100px;
+            height: 68px;
             width: auto;
             display: block;
         }
 
+        nav {
+            flex: 1;
+            min-width: 0;
+        }
+
         nav ul {
             display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 18px;
             list-style: none;
-            gap: 30px;
+            white-space: nowrap;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        nav ul::-webkit-scrollbar {
+            display: none;
         }
 
         nav ul li a {
             text-decoration: none;
             color: var(--text-dark);
             font-weight: 600;
-            transition: color 0.3s;
-            font-size: 1.1rem;
+            transition: color 0.3s ease;
+            font-size: 0.96rem;
         }
 
         nav ul li a:hover,
@@ -121,66 +154,145 @@
             color: var(--accent-coral);
         }
 
-        /* القسم البطولي (hero) */
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-shrink: 0;
+        }
+
+        .lang-toggle {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 6px 12px;
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-soft));
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(10, 44, 61, 0.2);
+            white-space: nowrap;
+            text-decoration: none;
+        }
+
+        .lang-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(10, 44, 61, 0.3);
+            background: linear-gradient(135deg, var(--primary-soft), var(--accent-coral));
+        }
+
+        .lang-toggle i {
+            font-size: 1.1rem;
+        }
+
         .hero {
-            background: linear-gradient(145deg, #ffffff 0%, #eef5f9 100%);
-            padding: 4rem 0 5rem 0;
+            position: relative;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at 15% 20%, rgba(180, 230, 217, 0.45), transparent 30%),
+                radial-gradient(circle at 85% 10%, rgba(255, 127, 92, 0.18), transparent 26%),
+                linear-gradient(145deg, #ffffff 0%, #eef5f9 100%);
+            padding: 5rem 0 4.5rem;
             border-bottom: 1px solid rgba(58, 107, 124, 0.1);
         }
 
-        .hero-content {
-            max-width: 800px;
+        .hero::after {
+            content: '';
+            position: absolute;
+            inset: auto -8% -32% auto;
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(58, 107, 124, 0.12), rgba(58, 107, 124, 0));
+            pointer-events: none;
         }
 
-        .hero .highlight {
+        .hero-content {
+            max-width: 760px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
             color: var(--primary-soft);
-            font-size: 1.5rem;
-            font-weight: 600;
-            display: block;
+            font-weight: 700;
             margin-bottom: 1rem;
-            background: rgba(58, 107, 124, 0.08);
-            padding: 0.5rem 1.5rem;
-            border-radius: 50px;
-            display: inline-block;
+            font-size: 1rem;
+            letter-spacing: 0.02em;
+            animation: fadeUp 0.8s ease both;
+        }
+
+        .hero h1 {
+            animation: fadeUp 0.9s ease both;
         }
 
         .hero p {
-            font-size: 1.3rem;
+            font-size: 1.15rem;
             color: #2c3e50;
-            margin-bottom: 2rem;
+            margin: 1.2rem 0 2rem;
+            max-width: 650px;
+            animation: fadeUp 1s ease both;
         }
 
-        .hero-stats {
+        .hero-actions {
             display: flex;
-            gap: 2rem;
-            background: white;
-            padding: 1.5rem 2rem;
-            border-radius: 60px;
-            box-shadow: var(--shadow);
-            width: fit-content;
-            margin-top: 2rem;
+            flex-wrap: wrap;
+            gap: 12px;
+            animation: fadeUp 1.1s ease both;
         }
-        .stat-item {
-            display: flex;
+
+        .btn {
+            background: var(--primary-soft);
+            color: white;
+            border: none;
+            padding: 0.95rem 1.8rem;
+            border-radius: 999px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+            display: inline-flex;
             align-items: center;
-            gap: 0.8rem;
+            justify-content: center;
+            gap: 10px;
+            text-decoration: none;
+            font-family: 'Cairo', sans-serif;
+            width: fit-content;
         }
-        .stat-number {
-            font-size: 2rem;
-            font-weight: 800;
+
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(58, 107, 124, 0.26);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary-soft);
             color: var(--primary-soft);
         }
-        .stat-label {
-            font-weight: 500;
-            color: #4a5568;
+
+        .btn-outline:hover {
+            background: var(--primary-soft);
+            color: white;
         }
 
-        /* البطاقات */
+        .content-section {
+            margin: 5rem 0;
+        }
+
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin: 3rem 0;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+            margin-top: 2rem;
         }
 
         .card {
@@ -188,8 +300,17 @@
             padding: 2rem 1.5rem;
             border-radius: var(--border-radius);
             box-shadow: var(--shadow);
-            transition: transform 0.2s ease, box-shadow 0.2s;
-            border: 1px solid rgba(0,0,0,0.02);
+            border: 1px solid rgba(0, 0, 0, 0.02);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            opacity: 0;
+            transform: translateY(18px);
+        }
+
+        .card.is-visible,
+        .content-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.7s ease, transform 0.7s ease;
         }
 
         .card:hover {
@@ -198,14 +319,14 @@
         }
 
         .card i {
-            font-size: 2.5rem;
+            font-size: 2.3rem;
             color: var(--primary-soft);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.3rem;
         }
 
         .card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
+            font-size: 1.35rem;
+            margin-bottom: 0.85rem;
             color: var(--primary-dark);
         }
 
@@ -213,39 +334,48 @@
             color: #475569;
         }
 
-        /* قسم الشهادات */
         .testimonials {
             background: var(--primary-dark);
             color: white;
-            padding: 4rem 0;
-            margin: 4rem 0;
+            padding: 4.5rem 0;
+            margin: 4.5rem 0;
         }
 
         .testimonials h2 {
             color: white;
         }
-        .testimonials h2:after {
+
+        .testimonials h2::after {
             background: linear-gradient(90deg, var(--accent-mint), var(--accent-coral));
         }
 
         .testimonial-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 2rem;
         }
 
         .testimonial-card {
-            background: rgba(255,255,255,0.1);
+            background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(5px);
             padding: 2rem;
             border-radius: var(--border-radius);
             border-right: 6px solid var(--accent-coral);
+            opacity: 0;
+            transform: translateY(18px);
+        }
+
+        .testimonial-card.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.7s ease, transform 0.7s ease;
         }
 
         .testimonial-text {
-            font-size: 1.05rem;
+            font-size: 1.02rem;
             font-style: italic;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
             color: #f0f4f8;
         }
 
@@ -253,40 +383,54 @@
             font-weight: 700;
             color: var(--accent-mint);
         }
+
         .author-title {
             font-size: 0.9rem;
             color: #b0c4d9;
+            margin-inline-start: 8px;
         }
 
-        /* جدول الأسعار */
         .pricing-cards {
             display: flex;
             flex-wrap: wrap;
-            gap: 30px;
+            gap: 24px;
             justify-content: center;
-            margin: 3rem 0;
+            margin-top: 2rem;
         }
 
         .pricing-card {
             background: white;
             border-radius: var(--border-radius);
-            padding: 2.5rem 2rem;
+            padding: 2.2rem 1.8rem;
             flex: 1 1 300px;
             box-shadow: var(--shadow);
             border: 1px solid rgba(58, 107, 124, 0.1);
-            transition: all 0.2s;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            opacity: 0;
+            transform: translateY(18px);
         }
+
+        .pricing-card.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
         .pricing-card.featured {
             border: 2px solid var(--accent-coral);
-            transform: scale(1.02);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-6px);
         }
 
         .price {
-            font-size: 3rem;
+            font-size: 2.8rem;
             font-weight: 800;
             color: var(--primary-soft);
             margin: 1rem 0;
         }
+
         .price small {
             font-size: 1rem;
             font-weight: 400;
@@ -295,83 +439,91 @@
 
         .feature-list {
             list-style: none;
-            margin: 2rem 0;
+            margin: 1.8rem 0;
         }
+
         .feature-list li {
             margin-bottom: 0.8rem;
             display: flex;
-            align-items: center;
-            gap: 0.6rem;
+            align-items: flex-start;
+            gap: 0.65rem;
+            color: #314155;
         }
+
         .feature-list i {
             color: var(--accent-coral);
-            font-size: 1.1rem;
+            font-size: 1.05rem;
+            margin-top: 0.2rem;
         }
 
-        .btn {
-            background: var(--primary-soft);
-            color: white;
-            border: none;
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: background 0.2s, transform 0.1s;
-            display: inline-block;
-            text-decoration: none;
-            font-family: 'Cairo', sans-serif;
-        }
-        .btn:hover {
-            background: var(--primary-dark);
-            transform: translateY(-3px);
-            box-shadow: 0 15px 25px rgba(255, 127, 92, 0.4);
-        }
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--primary-soft);
-            color: var(--primary-soft);
-        }
-        .btn-outline:hover {
-            background: var(--primary-soft);
-            color: white;
-        }
-
-        /* الأهلية و الأسئلة الشائعة */
         .eligibility-box {
             background: linear-gradient(130deg, #eef2f6, white);
             border-radius: var(--border-radius);
-            padding: 3rem;
-            margin: 4rem 0;
+            padding: 2.5rem;
+            margin-top: 2rem;
+            box-shadow: var(--shadow);
+            opacity: 0;
+            transform: translateY(18px);
+        }
+
+        .eligibility-box.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .eligibility-list {
+            margin: 1rem 0 1.5rem;
+            padding-inline-start: 1.2rem;
+        }
+
+        .eligibility-list li {
+            margin-bottom: 0.7rem;
+        }
+
+        .eligibility-note {
+            background: rgba(255, 255, 255, 0.74);
+            padding: 1.2rem 1.4rem;
+            border-radius: 20px;
         }
 
         .faq-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 25px;
-            margin: 3rem 0;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+            margin-top: 2rem;
         }
 
         .faq-item {
             background: white;
             padding: 1.5rem;
             border-radius: 20px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.02);
+            opacity: 0;
+            transform: translateY(18px);
         }
+
+        .faq-item.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
         .faq-question {
             font-weight: 700;
-            font-size: 1.2rem;
+            font-size: 1.08rem;
             color: var(--primary-dark);
             margin-bottom: 0.8rem;
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 0.6rem;
         }
+
         .faq-question i {
             color: var(--primary-soft);
+            margin-top: 0.2rem;
         }
 
-        /* الفوتر (مطابق للصفحة الرئيسية) */
         footer {
             background-color: #0a1c2a;
             color: #b0c4d9;
@@ -381,15 +533,15 @@
 
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 32px;
             margin-bottom: 40px;
         }
 
         .footer-col h4 {
             color: white;
-            margin-bottom: 20px;
-            font-size: 1.3rem;
+            margin-bottom: 18px;
+            font-size: 1.2rem;
         }
 
         .footer-col ul {
@@ -403,7 +555,7 @@
         .footer-col ul li a {
             color: #b0c4d9;
             text-decoration: none;
-            transition: color 0.3s;
+            transition: color 0.3s ease;
         }
 
         .footer-col ul li a:hover {
@@ -412,198 +564,314 @@
 
         .social-links {
             display: flex;
-            gap: 20px;
+            gap: 16px;
             margin-top: 20px;
         }
 
         .social-links a {
             color: white;
-            font-size: 1.5rem;
-            transition: color 0.3s;
+            font-size: 1.4rem;
+            transition: color 0.3s ease, transform 0.2s ease;
         }
 
         .social-links a:hover {
             color: var(--accent-coral);
+            transform: translateY(-2px);
         }
 
         .copyright {
             text-align: center;
-            padding-top: 30px;
+            padding-top: 24px;
             border-top: 1px solid #1e3a4a;
             font-size: 0.9rem;
         }
 
-        /* استجابة للجوال */
-        @media (max-width: 768px) {
-            h1 { font-size: 2.2rem; }
-            .hero-stats { flex-direction: column; border-radius: 30px; }
-            .container { padding: 0 20px; }
-            .pricing-card.featured { transform: none; }
-            .header-content {
-                flex-direction: column;
-                gap: 15px;
+        .section-gap {
+            margin-top: 5rem;
+        }
+
+        section {
+            scroll-margin-top: 110px;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(16px);
             }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 992px) {
             nav ul {
-                gap: 15px;
+                gap: 14px;
+                justify-content: flex-start;
+            }
+
+            .logo img {
+                height: 60px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 18px;
+            }
+
+            .header-content {
+                gap: 12px;
+            }
+
+            nav ul li a {
+                font-size: 0.88rem;
+            }
+
+            .hero {
+                padding: 4rem 0 3.5rem;
+            }
+
+            .content-section {
+                margin: 4rem 0;
+            }
+
+            .eligibility-box {
+                padding: 1.8rem;
+            }
+
+            .pricing-card.featured {
+                transform: none;
             }
         }
     </style>
 </head>
 <body>
-    <!-- الهيدر (تم تعديل القائمة حسب الترتيب والروابط المطلوبة) -->
     <header>
         <div class="container header-content">
-            <a href="index.html" class="logo">
+            <a href="google-grants.html" class="logo" aria-label="RiseUp Solutions">
                 <img src="logo.png" alt="RiseUp Solutions Logo">
             </a>
-            <nav>
+            <nav aria-label="Main navigation">
                 <ul>
                     <li><a href="index.html">الرئيسية</a></li>
                     <li><a href="index.html#services">الخدمات</a></li>
                     <li><a href="google-grants.html" class="active">منح جوجل الاعلانية</a></li>
                     <li><a href="sm.html">منح مايكروسوفت المجانية</a></li>
-                    <li><a href="digital advertsiting.html">الاعلانات الرقمية</a></li>
+                    <li><a href="digital-advertsiting.html">الاعلانات الرقمية</a></li>
                     <li><a href="tools.html">أدواتنا</a></li>
                     <li><a href="index.html#partners">شركاؤنا</a></li>
                     <li><a href="index.html#testimonials">عملاءنا</a></li>
                     <li><a href="about.html">تعرف علينا</a></li>
                 </ul>
             </nav>
+            <div class="header-actions">
+                <a class="lang-toggle" href="google-grants-en.html" role="button" aria-label="Switch to English">
+                    <i class="fas fa-language"></i>
+                    EN
+                </a>
+            </div>
         </div>
     </header>
 
-    <!-- القسم الرئيسي Hero (معدل باسم RiseUp Solutions) -->
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <span class="highlight"><i class="fas fa-gem" style="margin-left: 8px;"></i>برنامج منح Google الإعلانية</span>
-                <h1>10,000$ شهرياً للإعلان<br>لمنظمتك غير الربحية</h1>
-                <p>تخيل التأثير الذي يمكن أن تحدثه مؤسستك بميزانية إعلانية إضافية تصل إلى 120,000$ سنوياً. وصول أكبر، توعية أوسع، فرق حقيقي.</p>
-                <div class="hero-stats">
-                    <div class="stat-item"><span class="stat-number">$10k</span> <span class="stat-label">شهرياً/مجاناً</span></div>
-                    <div class="stat-item"><span class="stat-number">50+</span> <span class="stat-label">منظمة استفادت</span></div>
-                    <div class="stat-item"><span class="stat-number">142%</span> <span class="stat-label">نمو في التفاعل</span></div>
+                <div class="hero-kicker"><i class="fas fa-gem"></i><span>RiseUp Solutions</span></div>
+                <h1>10,000$ شهرياً للإعلان لمنظمتك غير الربحية</h1>
+                <p>وسّع نطاق رسالتك مع منحة Google الإعلانية: وصول أكبر، متبرعون أكثر، ومتطوعون جدد من خلال حملات مدروسة ومتوافقة.</p>
+                <div class="hero-actions">
+                    <a href="#eligibility" class="btn"><i class="fas fa-check-circle"></i>تحقق من الأهلية</a>
+                    <a href="#pricing" class="btn btn-outline"><i class="fas fa-tags"></i>عرض الأسعار</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ما هي المنحة؟ -->
-    <div class="container">
-        <section style="margin: 5rem 0;">
-            <h2>ما هي منحة Google الإعلانية؟</h2>
-            <p class="section-subtitle">برنامج يمنح المنظمات غير الربحية المؤهلة 10,000$ شهرياً للإنفاق على إعلانات جوجل. فريقنا من المتخصصين المعتمدين يساعدك في التقديم والإدارة.</p>
-            <div class="cards-grid">
-                <div class="card"><i class="fas fa-bullhorn"></i><h3>رفع الوعي</h3><p>تواصل مع جمهور أوسع وعرّفهم برسالتك.</p></div>
-                <div class="card"><i class="fas fa-hand-holding-heart"></i><h3>جذب المتبرعين</h3><p>حوّل المهتمين إلى داعمين حقيقيين.</p></div>
-                <div class="card"><i class="fas fa-users"></i><h3>تجنيد متطوعين</h3><p>أظهر فرص التطوع لمن يبحث عن العطاء.</p></div>
-            </div>
-        </section>
-
-        <!-- كيف يعمل (خطوات) -->
-        <section style="margin: 5rem 0;">
-            <h2>كيف نعمل؟</h2>
-            <p class="section-subtitle">عملية متكاملة لبدء حملتك الإعلانية عبر المنحة</p>
-            <div class="cards-grid">
-                <div class="card"><i class="fas fa-phone-alt"></i><h3>استشارة مجانية</h3><p>خبراء RiseUp Solutions المتخصصون في القطاع غير الربحي يوفرون وقتك ويبدأون معك من حيث انتهى الآخرون.</p></div>
-                <div class="card"><i class="fas fa-file-signature"></i><h3>الحصول على المنحة</h3><p>استرخ ودعنا نتولى المهمة. مدير نجاحك سيتواصل معك لأي مستندات مطلوبة.</p></div>
-                <div class="card"><i class="fas fa-laptop-code"></i><h3>تجهيز الموقع</h3><p>فريق المطورين يراجع موقعك ويضمن مطابقته لمعايير جوجل.</p></div>
-                <div class="card"><i class="fas fa-ad"></i><h3>إعداد حملات Ads</h3><p>ننشئ حملات لكل برامجك، ننتقي الكلمات المفتاحية، ونكتب إعلانات فعّالة.</p></div>
-            </div>
-        </section>
-    </div>
-
-    <!-- شهادات العملاء (معدلة باسم RiseUp Solutions) -->
-    <section class="testimonials">
+    <main>
         <div class="container">
-            <h2 style="color: white;">ماذا يقول عملاؤنا</h2>
-            <div class="testimonial-grid">
-                <div class="testimonial-card"><p class="testimonial-text">"العمل مع RiseUp Solutions أزال ضغط إدارة منحتنا. خبرتهم حوّلتها إلى أصل قيّم."</p><span class="testimonial-author"></span><span class="author-title">  مدير تسويق</span></div>
-                <div class="testimonial-card"><p class="testimonial-text">"كانوا استجابة لصلواتنا. الآن هم أكبر وأسرع قنواتنا نمواً للوصول لمستخدمين الجدد."</p><span class="testimonial-author"></span><span class="author-title">  مدير تنفيذي</span></div>
-                <div class="testimonial-card"><p class="testimonial-text">"نسبة النقر ارتفعت 142% سنة عن سنة. استمعوا لاحتياجاتنا وقدموا بناءً عليها."</p><span class="testimonial-author"></span><span class="author-title">  مدير تسويق</span></div>
-                <div class="testimonial-card"><p class="testimonial-text">"بدأنا بتوليد 7 أضعاف العملاء المحتملين أسبوعياً. التأثير كان كبيراً لدرجة أننا وظفنا موظفاً جديداً."</p><span class="testimonial-author"></span><span class="author-title">  مدير تسويق</span></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- الإدارة الشهرية والامتثال -->
-    <div class="container">
-        <section style="margin: 5rem 0;">
-            <h2>الإدارة الشهرية والامتثال</h2>
-            <div class="cards-grid">
-                <div class="card"><i class="fas fa-check-circle"></i><h3>الإشراف على الامتثال</h3><p>نضمن التزامك بقواعد جوجل المتجددة شهرياً.</p></div>
-                <div class="card"><i class="fas fa-chart-line"></i><h3>تقارير شهرية</h3><p>ملخصات أداء تعرض تأثير المنحة على رسالتك.</p></div>
-                <div class="card"><i class="fas fa-tasks"></i><h3>إدارة الإعلانات</h3><p>مراقبة الكلمات الرئيسية والنصوص وتحسين الأداء.</p></div>
-                <div class="card"><i class="fas fa-tags"></i><h3>خصومات حصرية</h3><p>امتيازات لعملائنا على الخدمات التسويقية الإضافية.</p></div>
-            </div>
-        </section>
-
-        <!-- الأسعار -->
-        <section style="margin: 5rem 0;">
-            <h2>الأسعار</h2>
-            <p class="section-subtitle">بأسعار معقولة ضمن مهمتنا لجعل هذه الميزة متاحة لجميع المنظمات</p>
-            <div class="pricing-cards">
-                <div class="pricing-card">
-                    <h3>الحصول على المنحة والإعداد</h3>
-                    <div class="price">$999 <small>لمرة واحدة</small></div>
-                    <ul class="feature-list">
-                        <li><i class="fas fa-check"></i> جلسة استراتيجية للجمهور والأهداف</li>
-                        <li><i class="fas fa-check"></i> تدقيق جاهزية الموقع</li>
-                        <li><i class="fas fa-check"></i> توجيه عملية الحصول على المنحة</li>
-                        <li><i class="fas fa-check"></i> إعداد حساب Google Ads</li>
-                        <li><i class="fas fa-check"></i> بحث الكلمات المفتاحية</li>
-                        <li><i class="fas fa-check"></i> إعداد تتبع التحويل (Google Analytics)</li>
-                    </ul>
-                    <button class="btn btn-outline">اختيار الباقة</button>
+            <section class="content-section" id="overview" data-reveal>
+                <h2>ما هي منحة Google الإعلانية؟</h2>
+                <p class="section-subtitle">برنامج يمنح المنظمات غير الربحية المؤهلة 10,000$ شهرياً للإنفاق على إعلانات جوجل. فريقنا من المتخصصين المعتمدين يساعدك في التقديم والإدارة.</p>
+                <div class="cards-grid">
+                    <article class="card" data-reveal>
+                        <i class="fas fa-bullhorn"></i>
+                        <h3>رفع الوعي</h3>
+                        <p>تواصل مع جمهور أوسع وعرّفهم برسالتك وقصتك.</p>
+                    </article>
+                    <article class="card" data-reveal>
+                        <i class="fas fa-hand-holding-heart"></i>
+                        <h3>جذب المتبرعين</h3>
+                        <p>حوّل المهتمين إلى داعمين حقيقيين ومساهمات مستمرة.</p>
+                    </article>
+                    <article class="card" data-reveal>
+                        <i class="fas fa-users"></i>
+                        <h3>تجنيد متطوعين</h3>
+                        <p>أظهر فرص التطوع للأشخاص المستعدين للمساعدة.</p>
+                    </article>
                 </div>
-                <div class="pricing-card featured">
-                    <h3>الإدارة الشهرية والامتثال</h3>
-                    <div class="price">$249 <small>/ شهرياً</small></div>
-                    <ul class="feature-list">
-                        <li><i class="fas fa-check"></i> مراقبة الامتثال للحفاظ على المنحة</li>
-                        <li><i class="fas fa-check"></i> تحديثات إعلانية غير محدودة</li>
-                        <li><i class="fas fa-check"></i> تحسين الحملات شهرياً</li>
-                        <li><i class="fas fa-check"></i> تقارير شهرية للمشاركة مع فريقك</li>
-                        <li><i class="fas fa-check"></i> جلسات استراتيجية سنوية</li>
-                        <li><i class="fas fa-check"></i> خصومات على خدمات إضافية</li>
-                    </ul>
-                    <button class="btn">اختيار الباقة</button>
+            </section>
+
+            <section class="content-section" id="process" data-reveal>
+                <h2>كيف نعمل؟</h2>
+                <p class="section-subtitle">عملية متكاملة لبدء حملتك الإعلانية عبر المنحة، من التقييم وحتى الإطلاق والمتابعة.</p>
+                <div class="cards-grid">
+                    <article class="card" data-reveal>
+                        <i class="fas fa-phone-alt"></i>
+                        <h3>استشارة مجانية</h3>
+                        <p>خبراء RiseUp Solutions يراجعون وضعك الحالي ويحددون أفضل نقطة بداية.</p>
+                    </article>
+                    <article class="card" data-reveal>
+                        <i class="fas fa-file-signature"></i>
+                        <h3>الحصول على المنحة</h3>
+                        <p>نتولى خطوات التقديم والمتابعة حتى اكتمال إعداد الحساب.</p>
+                    </article>
+                    <article class="card" data-reveal>
+                        <i class="fas fa-laptop-code"></i>
+                        <h3>تجهيز الموقع</h3>
+                        <p>نراجع موقعك ونضمن توافقه مع معايير الأهلية والسياسات.</p>
+                    </article>
+                    <article class="card" data-reveal>
+                        <i class="fas fa-ad"></i>
+                        <h3>إعداد حملات Ads</h3>
+                        <p>ننشئ الحملات والكلمات المفتاحية والإعلانات التي تخدم أهدافك.</p>
+                    </article>
                 </div>
-            </div>
-        </section>
-    </div>
-
-    <!-- من المؤهل؟ + الأسئلة الشائعة -->
-    <div class="container">
-        <div class="eligibility-box">
-            <h2 style="margin-top: 0;">⚠️ من هو المؤهل؟</h2>
-            <p style="font-size: 1.2rem; margin-bottom: 2rem;"><p>1-أن تكون منظمة غير ربحية رسمياً </p>
-
- <p>مسجلة قانونياً كمنظمة غير ربحية او جمعية خيرية في بلدها</p>
-
-
- 
- 	</p>
-            <div style="background: rgba(255,255,255,0.7); padding: 1.8rem; border-radius: 30px;">
-                <p><i class="fas fa-ban" style="color: #c0392b; margin-left: 0.6rem;"></i><strong>غير مؤهل:</strong> الكيانات الحكومية، المستشفيات، المدارس أو الجامعات, المنظمات السياسية, المنظمات الربحية.</p>
-                
-            </div>
+            </section>
         </div>
 
-        <section style="margin: 5rem 0;">
-            <h2>الأسئلة الشائعة</h2>
-            <div class="faq-grid">
-                <div class="faq-item"><div class="faq-question"><i class="fas fa-question-circle"></i>هل يترصّد الرصيد غير المستخدم من 10,000$؟</div><p>لا، يعمل البرنامج على نظام "استخدمه أو اخسره". لكننا نملك دليلاً لتعظيم إنفاقك الشهري.</p></div>
-                <div class="faq-item"><div class="faq-question"><i class="fas fa-question-circle"></i>هل تساعد المنحة في التواصل المحلي؟</div><p>نعم، لكن الأفضل دمج الاستهداف المحلي مع نطاق أوسع للاستفادة من كامل الميزانية.</p></div>
-                <div class="faq-item"><div class="faq-question"><i class="fas fa-question-circle"></i>كيف نضمن الامتثال لسياسات جوجل؟</div><p>خبرتنا تغطي كل التفاصيل، نقوم بمراقبة دورية لنبقى ضمن القواعد.</p></div>
-                <div class="faq-item"><div class="faq-question"><i class="fas fa-question-circle"></i>ماذا لو رفض جوجل طلبنا؟</div><p>نراجع الأسباب، نجري التعديلات، ونرشدك خلال إعادة التقديم.</p></div>
-                <div class="faq-item"><div class="faq-question"><i class="fas fa-question-circle"></i>لدي حساب Google Ads بالفعل</div><p>يجب أن يكون حساب المنحة منفصلاً. سنساعدك في إنشائه وتهيئته.</p></div>
-                <div class="faq-item"><div class="faq-question"><i class="fas fa-question-circle"></i>هل تدفع المنحة مقابل خدمات RiseUp Solutions؟</div><p>لا، المنحة فقط للإعلانات. لكن خدماتنا مصممة بأسعار مخفضة للمنظمات غير الربحية.</p></div>
+        <section class="testimonials" id="testimonials">
+            <div class="container">
+                <h2>ماذا يقول عملاؤنا</h2>
+                <div class="testimonial-grid">
+                    <article class="testimonial-card" data-reveal>
+                        <p class="testimonial-text">"العمل مع RiseUp Solutions أزال ضغط إدارة منحتنا. خبرتهم حوّلتها إلى أصل قيّم."</p>
+                        <div><span class="testimonial-author">مدير تسويق</span><span class="author-title">منظمة غير ربحية</span></div>
+                    </article>
+                    <article class="testimonial-card" data-reveal>
+                        <p class="testimonial-text">"كانوا استجابة لصلواتنا. الآن هم أكبر وأسرع قنواتنا نمواً للوصول إلى مستخدمين جدد."</p>
+                        <div><span class="testimonial-author">مدير تنفيذي</span><span class="author-title">جمعية خيرية</span></div>
+                    </article>
+                    <article class="testimonial-card" data-reveal>
+                        <p class="testimonial-text">"نسبة النقر ارتفعت 142% سنة عن سنة. استمعوا لاحتياجاتنا وقدموا بناءً عليها."</p>
+                        <div><span class="testimonial-author">مدير تسويق</span><span class="author-title">مؤسسة مجتمعية</span></div>
+                    </article>
+                    <article class="testimonial-card" data-reveal>
+                        <p class="testimonial-text">"بدأنا بتوليد 7 أضعاف العملاء المحتملين أسبوعياً. التأثير كان كبيراً لدرجة أننا وظفنا موظفاً جديداً."</p>
+                        <div><span class="testimonial-author">مدير تنفيذي</span><span class="author-title">مؤسسة تعليمية</span></div>
+                    </article>
+                </div>
             </div>
         </section>
-    </div>
 
-    <!-- الفوتر (مأخوذ من الصفحة الرئيسية) -->
+        <div class="container">
+            <section class="content-section" id="management" data-reveal>
+                <h2>الإدارة الشهرية والامتثال</h2>
+                <div class="cards-grid">
+                    <article class="card" data-reveal>
+                        <i class="fas fa-check-circle"></i>
+                        <h3>الإشراف على الامتثال</h3>
+                        <p>نراقب التحديثات ونحافظ على التزامك بقواعد جوجل المتجددة شهرياً.</p>
+                    </article>
+                    <article class="card" data-reveal>
+                        <i class="fas fa-chart-line"></i>
+                        <h3>تقارير شهرية</h3>
+                        <p>ملخصات أداء واضحة تعرض أثر المنحة على رسالتك.</p>
+                    </article>
+                    <article class="card" data-reveal>
+                        <i class="fas fa-tasks"></i>
+                        <h3>إدارة الإعلانات</h3>
+                        <p>مراقبة الكلمات الرئيسية والنصوص والتحسين المستمر للأداء.</p>
+                    </article>
+                    <article class="card" data-reveal>
+                        <i class="fas fa-tags"></i>
+                        <h3>خصومات حصرية</h3>
+                        <p>امتيازات لعملائنا على الخدمات التسويقية الإضافية.</p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="content-section" id="pricing" data-reveal>
+                <h2>الأسعار</h2>
+                <p class="section-subtitle">بأسعار معقولة ضمن مهمتنا لجعل هذه الميزة متاحة لجميع المنظمات المؤهلة.</p>
+                <div class="pricing-cards">
+                    <article class="pricing-card" data-reveal>
+                        <h3>الحصول على المنحة والإعداد</h3>
+                        <div class="price">$999 <small>لمرة واحدة</small></div>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check"></i><span>جلسة استراتيجية للجمهور والأهداف</span></li>
+                            <li><i class="fas fa-check"></i><span>تدقيق جاهزية الموقع</span></li>
+                            <li><i class="fas fa-check"></i><span>توجيه عملية الحصول على المنحة</span></li>
+                            <li><i class="fas fa-check"></i><span>إعداد حساب Google Ads</span></li>
+                            <li><i class="fas fa-check"></i><span>بحث الكلمات المفتاحية</span></li>
+                            <li><i class="fas fa-check"></i><span>إعداد تتبع التحويل (Google Analytics)</span></li>
+                        </ul>
+                        <a href="#eligibility" class="btn btn-outline">اختيار الباقة</a>
+                    </article>
+                    <article class="pricing-card featured" data-reveal>
+                        <h3>الإدارة الشهرية والامتثال</h3>
+                        <div class="price">$249 <small>/ شهرياً</small></div>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check"></i><span>مراقبة الامتثال للحفاظ على المنحة</span></li>
+                            <li><i class="fas fa-check"></i><span>تحديثات إعلانية غير محدودة</span></li>
+                            <li><i class="fas fa-check"></i><span>تحسين الحملات شهرياً</span></li>
+                            <li><i class="fas fa-check"></i><span>تقارير شهرية للمشاركة مع فريقك</span></li>
+                            <li><i class="fas fa-check"></i><span>جلسات استراتيجية سنوية</span></li>
+                            <li><i class="fas fa-check"></i><span>خصومات على خدمات إضافية</span></li>
+                        </ul>
+                        <a href="#eligibility" class="btn">اختيار الباقة</a>
+                    </article>
+                </div>
+            </section>
+
+            <section class="content-section" id="eligibility" data-reveal>
+                <div class="eligibility-box">
+                    <h2>من هو المؤهل؟</h2>
+                    <p class="section-subtitle">للاستفادة من منحة Google الإعلانية يجب أن تستوفي المؤسسة متطلبات الأهلية الأساسية التالية:</p>
+                    <ul class="eligibility-list">
+                        <li>أن تكون منظمة غير ربحية مسجلة رسمياً.</li>
+                        <li>أن تكون مسجلة قانونياً كجمعية خيرية أو مؤسسة غير ربحية في بلدها.</li>
+                        <li>أن تمتلك موقعاً إلكترونياً نشطاً وقابلاً للمراجعة.</li>
+                    </ul>
+                    <div class="eligibility-note">
+                        <p><i class="fas fa-ban" style="color: #c0392b; margin-left: 0.6rem;"></i><strong>غير مؤهل:</strong> الكيانات الحكومية، المستشفيات، المدارس أو الجامعات، المنظمات السياسية، والمنظمات الربحية.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-section" id="faq" data-reveal>
+                <h2>الأسئلة الشائعة</h2>
+                <div class="faq-grid">
+                    <article class="faq-item" data-reveal>
+                        <div class="faq-question"><i class="fas fa-question-circle"></i><span>هل يترصّد الرصيد غير المستخدم من 10,000$؟</span></div>
+                        <p>لا، يعمل البرنامج على نظام "استخدمه أو اخسره". لكننا نملك دليلاً لتعظيم إنفاقك الشهري.</p>
+                    </article>
+                    <article class="faq-item" data-reveal>
+                        <div class="faq-question"><i class="fas fa-question-circle"></i><span>هل تساعد المنحة في التواصل المحلي؟</span></div>
+                        <p>نعم، لكن الأفضل دمج الاستهداف المحلي مع نطاق أوسع للاستفادة من كامل الميزانية.</p>
+                    </article>
+                    <article class="faq-item" data-reveal>
+                        <div class="faq-question"><i class="fas fa-question-circle"></i><span>كيف نضمن الامتثال لسياسات جوجل؟</span></div>
+                        <p>خبرتنا تغطي كل التفاصيل، ونقوم بمراقبة دورية للبقاء ضمن القواعد.</p>
+                    </article>
+                    <article class="faq-item" data-reveal>
+                        <div class="faq-question"><i class="fas fa-question-circle"></i><span>ماذا لو رفض جوجل طلبنا؟</span></div>
+                        <p>نراجع الأسباب، نجري التعديلات، ونرشدك خلال إعادة التقديم.</p>
+                    </article>
+                    <article class="faq-item" data-reveal>
+                        <div class="faq-question"><i class="fas fa-question-circle"></i><span>لدي حساب Google Ads بالفعل</span></div>
+                        <p>يجب أن يكون حساب المنحة منفصلاً. سنساعدك في إنشائه وتهيئته.</p>
+                    </article>
+                    <article class="faq-item" data-reveal>
+                        <div class="faq-question"><i class="fas fa-question-circle"></i><span>هل تدفع المنحة مقابل خدمات RiseUp Solutions؟</span></div>
+                        <p>لا، المنحة فقط للإعلانات. لكن خدماتنا مصممة بأسعار مخفضة للمنظمات غير الربحية.</p>
+                    </article>
+                </div>
+            </section>
+        </div>
+    </main>
+
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -611,10 +879,10 @@
                     <h4>RiseUp Solutions</h4>
                     <p>وكالة تسويق رقمي متخصصة في دعم المؤسسات غير الربحية لتعزيز وجودها الرقمي وتحقيق أهدافها.</p>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
                 <div class="footer-col">
@@ -625,6 +893,7 @@
                         <li><a href="index.html#testimonials">الشهادات</a></li>
                         <li><a href="google-grants.html">منح إعلانات جوجل</a></li>
                         <li><a href="sm.html">منح مايكروسوفت المجانية</a></li>
+                        <li><a href="digital-advertsiting.html">الاعلانات الرقمية</a></li>
                         <li><a href="index.html#partners">شركاؤنا</a></li>
                         <li><a href="#">المدونة</a></li>
                         <li><a href="start.html">اتصل بنا</a></li>
@@ -643,13 +912,42 @@
                     <h4>تواصل معنا</h4>
                     <p><i class="fas fa-envelope"></i> info@o2work.online</p>
                     <p><i class="fas fa-phone"></i> 967-771237999+</p>
-                    <p><i class="fas fa-map-marker-alt"></i>اليمن - صنعاء- ارتل</p>
+                    <p><i class="fas fa-map-marker-alt"></i> اليمن - صنعاء - ارتل</p>
                 </div>
             </div>
             <div class="copyright">
-                <p>جميع الحقوق محفوظة-© 2026 RiseUp Solutions</p>
+                <p>جميع الحقوق محفوظة - © 2026 RiseUp Solutions</p>
             </div>
         </div>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const revealItems = document.querySelectorAll('[data-reveal]');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15 });
+
+            revealItems.forEach((item, index) => {
+                item.style.transitionDelay = `${Math.min(index * 0.05, 0.25)}s`;
+                observer.observe(item);
+            });
+
+            document.querySelectorAll('a[href^="#"]').forEach((link) => {
+                link.addEventListener('click', (event) => {
+                    const target = document.querySelector(link.getAttribute('href'));
+                    if (target) {
+                        event.preventDefault();
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
