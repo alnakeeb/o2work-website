@@ -98,6 +98,36 @@
             box-shadow: 0 15px 25px rgba(255, 127, 92, 0.4);
         }
 
+        /* ===== زر تبديل اللغات (التصميم المطلوب) ===== */
+        .lang-toggle {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 6px 12px;
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-soft));
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(10, 44, 61, 0.2);
+            text-decoration: none;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .lang-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(10, 44, 61, 0.3);
+            background: linear-gradient(135deg, var(--primary-soft), var(--accent-coral));
+            color: white;
+        }
+
+        .lang-toggle i {
+            font-size: 1.1rem;
+        }
+
         /* الهيدر */
         header {
             background-color: var(--white);
@@ -120,12 +150,29 @@
             display: block;
         }
 
+        nav {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+        }
+
         nav ul {
             display: flex;
             list-style: none;
             gap: 30px;
-            flex-wrap: wrap;
-            justify-content: center;
+            flex-wrap: nowrap;      /* منع الالتفاف إلى سطرين على الشاشات العريضة */
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* للشاشات المتوسطة والصغيرة: يسمح بالالتفاف للحفاظ على التصميم المتجاوب */
+        @media (max-width: 1100px) {
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
         }
 
         nav ul li a {
@@ -134,9 +181,10 @@
             font-weight: 600;
             transition: color 0.3s;
             font-size: 1.1rem;
+            white-space: nowrap;
         }
 
-        nav ul li a:hover {
+        nav ul li a:not(.lang-toggle):hover {
             color: var(--accent-coral);
         }
 
@@ -427,7 +475,8 @@
                 gap: 15px;
             }
             nav ul {
-                gap: 15px;
+                gap: 12px;
+                justify-content: center;
             }
             .hero .container {
                 grid-template-columns: 1fr;
@@ -447,16 +496,22 @@
             </a>
             <nav>
                 <ul>
+                    <!-- جميع الأزرار كما هي، مع وضع زر تبديل اللغات في أقصى اليسار (آخر عنصر في القائمة بسبب RTL) -->
                     <li><a href="index.html">الرئيسية</a></li>
                     <li><a href="#services">الخدمات</a></li>
                     <li><a href="google-grants.html">منح جوجل الاعلانية</a></li>
                     <li><a href="sm.html">منح مايكروسوفت المجانية</a></li>
                     <li><a href="digital advertsiting.html">الاعلانات الرقمية</a></li>
                     <li><a href="tools.html">أدواتنا</a></li>
-                    <!-- إضافة رابط شركاؤنا -->
                     <li><a href="#partners">شركاؤنا</a></li>
                     <li><a href="#testimonials">عملاؤنا</a></li>
                     <li><a href="about.html">تعرف علينا</a></li>
+                    <!-- زر تبديل اللغات في أقصى اليسار (آخر عنصر في القائمة) -->
+                    <li>
+                        <a href="index-en.html" class="lang-toggle">
+                            <i class="fas fa-globe"></i> English
+                        </a>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -467,7 +522,7 @@
         <section class="hero">
             <div class="container">
                 <div class="hero-text">
-                    <h1>هل تعلم أن مؤسستك يمكنها الحصول على أكثر من 120.000 دولار سنويا كمنح رقمية مجانية كل عام؟؟</h1>
+                    <h1>هل تعلم أن مؤسستك يمكنها الحصول على 140.000 دولار سنويا كمنح رقمية مجانية كل عام؟؟</h1>
                     <p style="font-size:18px;color:#444;max-width:850px;margin:auto;line-height:1.7;">
                         العديد من المنظمات غير الربحية والجمعيات الخيرية مؤهلة للحصول على منح رقمية قوية تقدمها شركات التكنولوجيا العالمية مثل جوجل التي تقدم 10,000 دولار شهريا ومايكروسوفت التي تقدم 2000 دولار سنويا. تساعد هذه المنح المؤسسات على توسيع تأثيرها، والوصول إلى عدد أكبر من المانحين، والترويج لمشاريعها الإنسانية عبر الإنترنت.
                     </p>
