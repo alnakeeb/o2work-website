@@ -79,6 +79,36 @@
             margin-bottom: 2rem;
             font-weight: 400;
         }
+    /* ===== زر تبديل اللغات (التصميم المطلوب) ===== */
+        .lang-toggle {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 6px 12px;
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-soft));
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(10, 44, 61, 0.2);
+            text-decoration: none;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .lang-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(10, 44, 61, 0.3);
+            background: linear-gradient(135deg, var(--primary-soft), var(--accent-coral));
+            color: white;
+        }
+
+        .lang-toggle i {
+            font-size: 1.1rem;
+        }
+
 
         /* الهيدر (مطابق للصفحة الرئيسية) */
         header {
@@ -414,6 +444,11 @@
                     <li><a href="tools.html">أدواتنا</a></li>
                     <li><a href="index.html#testimonials">عملاءنا</a></li>
                     <li><a href="about.html">تعرف علينا</a></li>
+                    <li>
+                        <a href="digital-advertising-en.html" class="lang-toggle">
+                            <i class="fas fa-globe"></i> English
+                        </a>
+                    </li>
                 </ul>
             </nav>
         </div>
