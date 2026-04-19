@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RiseUp Solutions | About Us - Your Digital Partner for Nonprofits</title>
+    <!-- Google Fonts: English Inter font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafc;
+            color: #1e2b3a;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Color Palette matching RiseUp Solutions */
+        :root {
+            --primary-dark: #0a2c3d;
+            --primary-soft: #3a6b7c;
+            --accent-mint: #b4e6d9;
+            --accent-coral: #ff7f5c;
+            --text-dark: #1e2b3a;
+            --text-light: #f0f4f8;
+            --bg-light: #f9fafc;
+            --white: #ffffff;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --border-radius: 24px;
+        }
+
+        h1, h2, h3 {
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            color: var(--primary-dark);
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 70px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-soft), var(--accent-coral));
+            border-radius: 4px;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #4a627a;
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        /* Header Navigation */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo img {
+            height: 80px;
+            width: auto;
+            display: block;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 15px;
+            flex-wrap: nowrap; /* Forces links onto one single line */
+            align-items: center;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+            white-space: nowrap;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-coral);
+        }
+
+        /* Custom treatment for Active Link (About Us): Just text color Black, no container border */
+        nav ul li a.active {
+            color: #000000 !important;
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+            padding: 0 !important;
+        }
+
+        /* Custom styled language toggle button */
+        .lang-toggle {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 6px 12px;
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-soft));
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(10, 44, 61, 0.2);
+            white-space: nowrap;
+        }
+
+        .lang-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(10, 44, 61, 0.3);
+            background: linear-gradient(135deg, var(--primary-soft), var(--accent-coral));
+        }
+
+        .lang-toggle i {
+            font-size: 1.1rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(145deg, #ffffff 0%, #eef5f9 100%);
+            padding: 4rem 0 3rem 0;
+            text-align: center;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #2c3e50;
+            max-width: 800px;
+            margin: 0 auto 1.5rem;
+        }
+
+        /* About Us and Mission Cards */
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 3rem 0;
+        }
+
+        .about-card {
+            background: var(--white);
+            padding: 2.5rem 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: transform 0.2s ease;
+            border: 1px solid rgba(0,0,0,0.02);
+        }
+
+        .about-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .about-card i {
+            font-size: 2.5rem;
+            color: var(--accent-coral);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-card h3 {
+            font-size: 1.8rem;
+            color: var(--primary-soft);
+            margin-bottom: 1rem;
+        }
+
+        /* Founder's Note */
+        .founder-note {
+            background: linear-gradient(130deg, #eef2f6, white);
+            border-radius: var(--border-radius);
+            padding: 3rem;
+            margin: 4rem 0;
+            position: relative;
+            border-left: 8px solid var(--accent-coral);
+        }
+
+        .founder-note h3 {
+            font-size: 2rem;
+            color: var(--primary-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .founder-note .quote-icon {
+            font-size: 4rem;
+            color: var(--accent-mint);
+            opacity: 0.3;
+            position: absolute;
+            top: 1rem;
+            right: 2rem;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 3rem 0;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 2rem 1.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: transform 0.2s ease;
+            border: 1px solid rgba(0,0,0,0.02);
+        }
+
+        .service-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .service-card img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 16px;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card .service-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent-mint);
+            margin-bottom: 0.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-soft);
+        }
+
+        .service-card p {
+            color: #475569;
+        }
+
+        /* Call to Action */
+        .project-cta {
+            background: var(--primary-dark);
+            color: white;
+            padding: 4rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+            margin: 4rem 0;
+        }
+
+        .project-cta h2 {
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+        .project-cta h2:after {
+            background: linear-gradient(90deg, var(--accent-mint), var(--accent-coral));
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .project-cta p {
+            color: #e0e0e0;
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background-color: var(--accent-coral);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: background 0.2s, transform 0.1s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #e55a3a;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(255, 127, 92, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0a1c2a;
+            color: #b0c4d9;
+            padding: 60px 0 30px;
+            margin-top: 5rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: #b0c4d9;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--accent-coral);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-coral);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #1e3a4a;
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Optimization */
+        @media (max-width: 1024px) {
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .founder-note {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with single-line navigation layout -->
+    <header>
+        <div class="container header-content">
+            <a href="about.html" class="logo">
+                <img src="logo.png" alt="RiseUp Solutions Logo">
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index-en.html">Home</a></li>
+                    <li><a href="index-en.html#services">Services</a></li>
+                    <li><a href="google-grants-en.html">Google Ad Grants</a></li>
+                    <li><a href="sm-en.html">Microsoft Grants</a></li>
+                    <li><a href="digital-advertising-en.html">Digital Ads</a></li>
+                    <li><a href="tools-en.html">Tools</a></li>
+                    <li><a href="index-en.html#partners">Partners</a></li>
+                    <li><a href="index-en.html#testimonials">Clients</a></li>
+                    <li><a href="about-en.html" class="active">About Us</a></li>
+                    <li>
+                        <button class="lang-toggle" onclick="location.href='about-ar.html'">
+                            <i class="fas fa-globe"></i> AR
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>You Deserve a Digital Partner on Your Side</h1>
+            <p>At RiseUp Solutions, we are a digital marketing agency dedicated to helping nonprofits achieve their goals through Google Ad Grants management, impactful web experiences, and scalable online advertising methods.</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- About Us & Our Mission Cards -->
+        <div class="about-grid">
+            <div class="about-card">
+                <i class="fas fa-users"></i>
+                <h3>About Us</h3>
+                <p>RiseUp Solutions is a digital marketing agency supporting nonprofit growth. We believe every nonprofit deserves a professional digital space that drives expansion seamlessly.</p>
+            </div>
+            <div class="about-card">
+                <i class="fas fa-bullseye"></i>
+                <h3>Our Mission</h3>
+                <p>Equipping nonprofits to amplify community impacts through transparent digital platforms and user-centric advertising models.</p>
+            </div>
+        </div>
+
+        <!-- Founder's Message Note -->
+        <div class="founder-note">
+            <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+            <h3>How This Journey Began and Why I Care Deeply About Your Nonprofit's Marketing</h3>
+            <p>Over 11 years in digital marketing, I witnessed many organizations investing in strategies that fell short—underperforming campaigns, confusing websites, and poorly optimized paid search efforts. This frustrated me because I know it doesn't have to be this way.</p>
+            <p>In 2025, I embarked on a mission to deliver a practical, collaborative approach tailored specifically for nonprofits. My goal was to understand each organization's unique needs and build comprehensive digital strategies that drive their mission forward. This led to creating our remote agency, dedicated to solving complex challenges through well-designed websites, effective Google Ad Grants management, and optimized PPC campaigns.</p>
+            <p>We aspire to be a trustworthy and affordable partner for nonprofits, providing solutions that maximize impact. Collaborating with inspiring organizations has shown me the joy of turning visions into reality. The most rewarding part is seeing our work make a tangible difference for the communities our clients serve.</p>
+            <p style="margin-top: 1.5rem; font-weight: 700;">— The Founder</p>
+        </div>
+
+        <!-- Services Presentation -->
+        <h2>Our Services</h2>
+        <div class="services-grid">
+            <!-- 1. Google Ad Grants -->
+            <div class="service-card">
+                <img src="ads.png" alt="Google Ads Management">
+                <div class="service-number">01</div>
+                <h3>Google Ad Grants</h3>
+                <p>The Google Ad Grants program provides eligible nonprofits with $10,000 monthly in free search campaigns. We direct grant implementation completely.</p>
+            </div>
+            <!-- 2. PPC Paid Campaigns -->
+            <div class="service-card">
+                <img src="per.png" alt="PPC Digital Strategy">
+                <div class="service-number">02</div>
+                <h3>PPC & Paid Search</h3>
+                <p>Drive targeted actions quickly utilizing premium digital search mechanics and scalable marketing deployment models.</p>
+            </div>
+            <!-- 3. Web Development -->
+            <div class="service-card">
+                <img src="des.png" alt="Professional Web Production">
+                <div class="service-number">03</div>
+                <h3>Web Design & Development</h3>
+                <p>Modern visual representations built for engagement efficiency and streamlined operations effortlessly.</p>
+            </div>
+            <!-- 4. Site Maintenance -->
+            <div class="service-card">
+                <img src="caresite.png" alt="Site Support Services">
+                <div class="service-number">04</div>
+                <h3>Site Maintenance Plans</h3>
+                <p>We supply routine upkeep ensuring platform uptime security is optimized thoroughly always.</p>
+            </div>
+            <!-- 5. Search Optimization -->
+            <div class="service-card">
+                <img src="seo.png" alt="Organic Reach Capabilities">
+                <div class="service-number">05</div>
+                <h3>Search Optimization (SEO)</h3>
+                <p>Improve organic presence consistently utilizing authoritative structural guidelines effectively.</p>
+            </div>
+            <!-- 6. Additional Support -->
+            <div class="service-card">
+                <img src="ath.png" alt="Assorted Digital Help">
+                <div class="service-number">06</div>
+                <h3>Other Services</h3>
+                <p>Browse supplemental tools designed around specific operational needs immediately.</p>
+            </div>
+        </div>
+
+        <!-- Projects Action Block -->
+        <div class="project-cta">
+            <h2>Interested in Launching a Project with Us?</h2>
+            <p>Reach our teams effortlessly and receive guided assistance reliably.</p>
+            <a href="start.html" class="btn">Get in Touch</a>
+        </div>
+    </div>
+
+    <!-- Website Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>RiseUp Solutions</h4>
+                    <p>Enabling organizational progress comprehensively through digital advancements worldwide.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index-en.html">Home</a></li>
+                        <li><a href="index-en.html#services">Services</a></li>
+                        <li><a href="index-en.html#testimonials">Testimonials</a></li>
+                        <li><a href="google-grants-en.html">Google Ads</a></li>
+                        <li><a href="sm-en.html">Microsoft Support</a></li>
+                        <li><a href="digital-advertising-en.html">Campaigns</a></li>
+                        <li><a href="tools-en.html">Helpful Tools</a></li>
+                        <li><a href="index-en.html#partners">Our Partners</a></li>
+                        <li><a href="about-en.html">About</a></li>
+                        <li><a href="#">Articles</a></li>
+                        <li><a href="start-en.html">Connect</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Core Services</h4>
+                    <ul>
+                        <li><a href="google-grants-en.html">Ad Grants</a></li>
+                        <li><a href="index-en.html#services">Web Design</a></li>
+                        <li><a href="digital-advertising-en.html">Digital Ads</a></li>
+                        <li><a href="index-en.html#services">Search Optimization</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Support</h4>
+                    <p><i class="fas fa-envelope"></i> info@o2work.online</p>
+                    <p><i class="fas fa-phone"></i> +967-771237999</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Yemen - Sana'a - Artal</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>All rights reserved - © 2026 RiseUp Solutions</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
