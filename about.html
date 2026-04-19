@@ -25,7 +25,7 @@
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 0 auto;
             padding: 0 24px;
         }
@@ -97,7 +97,7 @@
         }
 
         .logo img {
-            height: 100px;
+            height: 80px;
             width: auto;
             display: block;
         }
@@ -105,8 +105,9 @@
         nav ul {
             display: flex;
             list-style: none;
-            gap: 30px;
-            flex-wrap: wrap;
+            gap: 15px;
+            flex-wrap: nowrap;
+            align-items: center;
         }
 
         nav ul li a {
@@ -114,12 +115,49 @@
             color: var(--text-dark);
             font-weight: 600;
             transition: color 0.3s;
-            font-size: 1.1rem;
+            font-size: 0.95rem;
+            white-space: nowrap;
         }
 
         nav ul li a:hover,
         nav ul li a.active {
             color: var(--accent-coral);
+        }
+
+        nav ul li a.active {
+            color: #000000;
+            background: transparent;
+            border: none;
+            box-shadow: none;
+            padding: 0;
+        }
+
+        /* زر تبديل اللغة */
+        .lang-toggle {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 6px 12px;
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-soft));
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(10, 44, 61, 0.2);
+            white-space: nowrap;
+        }
+
+        .lang-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(10, 44, 61, 0.3);
+            background: linear-gradient(135deg, var(--primary-soft), var(--accent-coral));
+        }
+
+        .lang-toggle i {
+            font-size: 1.1rem;
         }
 
         /* قسم البطل (Hero) */
@@ -215,29 +253,12 @@
             transform: translateY(-6px);
         }
 
-        .service-image {
+        .service-card img {
             width: 100%;
             height: 160px;
-            background-color: #f0f7fa;
+            object-fit: cover;
             border-radius: 16px;
             margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary-soft);
-            font-weight: 600;
-            font-size: 1.2rem;
-            border: 2px dashed var(--primary-soft);
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-
-        .service-image span {
-            background: rgba(255,255,255,0.9);
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            color: var(--primary-dark);
         }
 
         .service-card .service-number {
@@ -367,6 +388,12 @@
         }
 
         /* استجابة للجوال */
+        @media (max-width: 1024px) {
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
         @media (max-width: 768px) {
             h1 { font-size: 2.2rem; }
             .header-content {
@@ -385,23 +412,28 @@
     </style>
 </head>
 <body>
-    <!-- الهيدر مع إضافة رابط "شركاؤنا" -->
+    <!-- الهيدر -->
     <header>
         <div class="container header-content">
-            <a href="index.html" class="logo">
-                <img src="logo.png" alt="RiseUp Solutions Logo">
+            <a href="about-ar.html" class="logo">
+                <img src="logo.png" alt="RiseUp Solutions الشعار">
             </a>
             <nav>
                 <ul>
                     <li><a href="index.html">الرئيسية</a></li>
                     <li><a href="index.html#services">الخدمات</a></li>
-                    <li><a href="google-grants.html">منح جوجل الاعلانية</a></li>
+                    <li><a href="google-grants.html">منح جوجل الإعلانية</a></li>
                     <li><a href="sm.html">منح مايكروسوفت المجانية</a></li>
-                    <li><a href="digital-advertising.html">الاعلانات الرقمية</a></li> <!-- تم تصحيح اسم الملف (واصل بدلاً من مسافة) -->
+                    <li><a href="digital-advertising.html">الإعلانات الرقمية</a></li>
                     <li><a href="tools.html">أدواتنا</a></li>
-                    <li><a href="index.html#partners">شركاؤنا</a></li>
-                    <li><a href="index.html#testimonials">عملاءنا</a></li>
+                    <li><a href="about.html#partners">شركاؤنا</a></li>
+                    <li><a href="about.html#testimonials">عملاءنا</a></li>
                     <li><a href="about.html" class="active">تعرف علينا</a></li>
+                    <li>
+                        <button class="lang-toggle" onclick="location.href='index.html'">
+                            <i class="fas fa-globe"></i> EN
+                        </button>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -440,7 +472,7 @@
             <p style="margin-top: 1.5rem; font-weight: 700;">— المؤسس</p>
         </div>
 
-         <!-- خدماتنا -->
+        <!-- خدماتنا -->
         <h2>خدماتنا</h2>
         <div class="services-grid">
             <!-- 1. منح Google الإعلانية -->
@@ -462,7 +494,7 @@
                 <img src="des.png" alt="فريق RiseUp Solutions">
                 <div class="service-number">03</div>
                 <h3>تصميم وتطوير المواقع</h3>
-                <p>نتخصص في إنشاء مواقع جميلة وسهلة الاستخدام مصممة خصيصاً لتعزيز مهمة مؤسستك، وإشراك جمهورك، وتحفيز التفاعلات المؤثرة.  <a href="#" style="color: var(--accent-coral);"></a>.</p>
+                <p>نتخصص في إنشاء مواقع جميلة وسهلة الاستخدام مصممة خصيصاً لتعزيز مهمة مؤسستك، وإشراك جمهورك، وتحفيز التفاعلات المؤثرة.</p>
             </div>
             <!-- 4. خطط رعاية المواقع -->
             <div class="service-card">
@@ -487,8 +519,7 @@
             </div>
         </div>
 
-
-        <!-- دعوة للمشروع (تم تعديل رابط الزر إلى start.html) -->
+        <!-- دعوة للمشروع -->
         <div class="project-cta">
             <h2>مهتم ببدء مشروع معنا؟</h2>
             <p>سواء كان مكالمة هاتفية، أو محادثة فيديو، أو لقاء على القهوة إذا كنت في المنطقة، نحن متحمسون للمساعدة في مواجهة تحديات التسويق لمؤسستك معاً.</p>
@@ -496,7 +527,7 @@
         </div>
     </div>
 
-    <!-- الفوتر (مع إضافة رابط شركاؤنا) -->
+    <!-- الفوتر -->
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -513,14 +544,14 @@
                 <div class="footer-col">
                     <h4>روابط سريعة</h4>
                     <ul>
-                        <li><a href="index.html">الرئيسية</a></li>
-                        <li><a href="index.html#services">الخدمات</a></li>
-                        <li><a href="index.html#testimonials">الشهادات</a></li>
+                        <li><a href="about-ar.html">الرئيسية</a></li>
+                        <li><a href="about-ar.html#services">الخدمات</a></li>
+                        <li><a href="about-ar.html#testimonials">الشهادات</a></li>
                         <li><a href="google-grants.html">منح إعلانات جوجل</a></li>
                         <li><a href="sm.html">منح مايكروسوفت المجانية</a></li>
                         <li><a href="digital-advertising.html">الإعلانات الرقمية</a></li>
                         <li><a href="tools.html">أدواتنا</a></li>
-                        <li><a href="index.html#partners">شركاؤنا</a></li>
+                        <li><a href="index-ar.html#partners">شركاؤنا</a></li>
                         <li><a href="about.html">تعرف علينا</a></li>
                         <li><a href="#">المدونة</a></li>
                         <li><a href="start.html">اتصل بنا</a></li>
@@ -530,9 +561,9 @@
                     <h4>خدماتنا</h4>
                     <ul>
                         <li><a href="google-grants.html">إعلانات جوجل</a></li>
-                        <li><a href="index.html#services">تصميم مواقع</a></li>
+                        <li><a href="about-ar.html#services">تصميم مواقع</a></li>
                         <li><a href="digital-advertising.html">إعلانات رقمية</a></li>
-                        <li><a href="index.html#services">تحسين محركات البحث</a></li>
+                        <li><a href="about-ar.html#services">تحسين محركات البحث</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
