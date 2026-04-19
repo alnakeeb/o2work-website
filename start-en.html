@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | RiseUp Solutions</title>
+    <!-- Google Fonts (Cairo supports both Arabic & Latin) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Color variables (unchanged, still modern) */
+        :root {
+            --primary: #6c5ce7;
+            --primary-dark: #5649c0;
+            --secondary: #a463f5;
+            --accent: #00d2d3;
+            --light: #f9f9f9;
+            --dark: #2d3436;
+            --gray: #b2bec3;
+            --white: #ffffff;
+            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --focus-shadow: 0 0 0 3px rgba(108, 92, 231, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            line-height: 1.6;
+            color: var(--dark);
+            position: relative;
+        }
+
+        /* Language toggle button (positioned top right) */
+        .lang-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        .lang-toggle {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 6px 12px;
+            background: linear-gradient(135deg, #0a2c3d, #3a6b7c);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(10, 44, 61, 0.2);
+            text-decoration: none;
+            font-family: 'Cairo', sans-serif;
+        }
+        .lang-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(10, 44, 61, 0.3);
+            background: linear-gradient(135deg, #3a6b7c, #ff7f5c);
+            color: white;
+        }
+        .lang-toggle i {
+            font-size: 1.1rem;
+        }
+
+        .section.contact {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            box-shadow: var(--shadow), 0 20px 40px rgba(0, 0, 0, 0.2);
+            padding: 50px 40px;
+            max-width: 700px;
+            width: 100%;
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .section.contact:hover {
+            transform: translateY(-5px);
+        }
+
+        .section.contact h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+            letter-spacing: -0.5px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section.contact h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+
+        .section.contact p.sub {
+            text-align: center;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .section.contact form {
+            margin-top: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .section.contact input,
+        .section.contact textarea {
+            width: 100%;
+            padding: 16px 20px;
+            border: 2px solid transparent;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            font-family: 'Cairo', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            color: var(--dark);
+            direction: ltr;
+            border: 1px solid #e0e0e0;
+        }
+
+        .section.contact input:focus,
+        .section.contact textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: var(--focus-shadow);
+            background: white;
+        }
+
+        .section.contact input::placeholder,
+        .section.contact textarea::placeholder {
+            color: #999;
+            font-weight: 300;
+            opacity: 0.8;
+        }
+
+        .section.contact textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .section.contact button {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            padding: 16px 30px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(108, 92, 231, 0.3);
+            font-family: 'Cairo', sans-serif;
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .section.contact button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .section.contact button:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 30px rgba(108, 92, 231, 0.5);
+        }
+
+        .section.contact button:hover::before {
+            left: 100%;
+        }
+
+        .section.contact button i {
+            font-size: 1.1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .section.contact button:hover i {
+            transform: translateX(5px);
+        }
+
+        .section.contact input:hover,
+        .section.contact textarea:hover {
+            border-color: var(--secondary);
+            box-shadow: 0 4px 12px rgba(164, 99, 245, 0.15);
+        }
+
+        @media (max-width: 600px) {
+            .section.contact {
+                padding: 35px 25px;
+            }
+            .section.contact h2 {
+                font-size: 2rem;
+            }
+            .section.contact input,
+            .section.contact textarea,
+            .section.contact button {
+                padding: 14px 18px;
+                font-size: 1rem;
+            }
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 30px;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .contact-info a {
+            color: inherit;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .contact-info i {
+            background: rgba(108, 92, 231, 0.1);
+            padding: 12px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .contact-info i:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .divider {
+            text-align: center;
+            margin: 20px 0 0;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        .divider span {
+            background: rgba(255,255,255,0.8);
+            padding: 0 15px;
+            position: relative;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Language toggle button (top right) -->
+    <div class="lang-switch">
+        <a href="start.html" class="lang-toggle">
+            <i class="fas fa-globe"></i> العربية
+        </a>
+    </div>
+
+    <section class="section contact" id="contact">
+        <h2>Let's Grow Your Impact Together</h2>
+        <p class="sub">We're here to answer your questions and help you achieve your goals</p>
+        
+        <!-- Form submission using FormSubmit.co (same email) -->
+        <form action="https://formsubmit.co/info@o2work.online" method="POST">
+            <!-- Hidden fields for better UX -->
+            <input type="hidden" name="_next" value="thanx-en.html">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="box">
+
+            <input type="text" name="name" placeholder="Full Name" required>
+            <input type="email" name="email" placeholder="Email Address" required>
+            <textarea name="message" rows="5" placeholder="Your message..." required></textarea>
+            
+            <button type="submit">
+                <i class="fas fa-paper-plane"></i> 
+                Send Message
+            </button>
+        </form>
+
+        <div class="contact-info">
+            <!-- WhatsApp chat -->
+            <a href="https://wa.me/967776406354" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+            <!-- Telegram chat -->
+            <a href="https://t.me/+967776406354" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-telegram-plane"></i>
+            </a>
+            <!-- Email (redirect to start.html, but we keep same behavior) -->
+            <a href="start-en.html">
+                <i class="far fa-envelope"></i>
+            </a>
+            <!-- Phone call -->
+            <a href="tel:00967776406354">
+                <i class="fas fa-phone-alt"></i>
+            </a>
+        </div>
+        <div class="divider">
+            <span>Or follow us on social media</span>
+        </div>
+    </section>
+
+    <script>
+        (function() {
+            const form = document.querySelector('form');
+            const nextUrl = document.querySelector('input[name="_next"]').value;
+            if (nextUrl.includes('yourwebsite.com')) {
+                console.log('Please update the thank you page link in the _next field to a real URL.');
+            } else {
+                console.log('Thank you page set to: ' + nextUrl);
+            }
+        })();
+    </script>
+</body>
+</html>
